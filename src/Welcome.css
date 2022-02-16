@@ -5,7 +5,8 @@
 
 .welcome-title {
     text-align: center;
-    font-weight: normal;
+    font-size: 2em;
+    margin: 20px 0;
 }
 
 .about-container {

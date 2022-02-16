@@ -9,7 +9,7 @@ function Welcome() {
         <>
         <Header />
         <div className="welcome-container">
-            <h1 className="welcome-title">How Circle works</h1>
+            <div className="welcome-title">How Circle works</div>
             <div className="about-container">
                 <div className="about-container-items">
                     <div className="about-items">Tell us about you</div>
