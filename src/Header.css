@@ -1,4 +1,22 @@
 .header {
-    padding: 25px 0 25px 25px;
+    padding: 25px;
     border-bottom: 2px solid gray;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-container-items {
+    padding: 0 25px 0 25px;
+}
+
+.header-company-name {
+    font-size: 0.75em;
+    padding-left: 5px;
+}
+
+.header-title {
+    font-weight: 600;
 }

@@ -4,7 +4,7 @@ import Header from './Header';
 function UserInfo() {
     return (
         <>
-            <Header />
+            <Header title="Join Circle"/>
             User Info
         </>
     );
