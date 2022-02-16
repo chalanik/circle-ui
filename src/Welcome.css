@@ -1,5 +1,6 @@
 .welcome-container {
-    margin:0px auto;
+    margin: 0px auto;
+    text-align: center;
 }
 
 .welcome-title {
@@ -18,4 +19,8 @@
 
 .about-container-items {
     width: 25%;
+}
+
+.get-started-link {
+    text-decoration: none;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import './Welcome.css';
 
 function Welcome() {
@@ -24,7 +25,9 @@ function Welcome() {
             </div>
 
             <div className="welcome-button-container">
-                <Button color="primary" variant="contained">Get started</Button>
+                <Link className="get-started-link" to="/user-info">
+                    <Button color="primary" variant="contained">Get started</Button>
+                </Link>
             </div>
         </div>
     );
