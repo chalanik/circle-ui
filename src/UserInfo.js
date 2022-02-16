@@ -1,10 +1,12 @@
 import React from 'react';
+import Header from './Header';
 
 function UserInfo() {
     return (
-        <div>
+        <>
+            <Header />
             User Info
-        </div>
+        </>
     );
 }
 

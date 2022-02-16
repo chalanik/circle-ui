@@ -5,11 +5,13 @@
 
 .welcome-title {
     text-align: center;
+    font-weight: normal;
 }
 
 .about-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
 }
 
 .welcome-button-container {
@@ -19,6 +21,11 @@
 
 .about-container-items {
     width: 25%;
+}
+
+.about-items {
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 .get-started-link {
