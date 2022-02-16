@@ -1,0 +1,21 @@
+.welcome-container {
+    margin:0px auto;
+}
+
+.welcome-title {
+    text-align: center;
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.welcome-button-container {
+    text-align: center;
+    margin: 10px;
+}
+
+.about-container-items {
+    width: 25%;
+}
