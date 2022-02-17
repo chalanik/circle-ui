@@ -9,6 +9,7 @@ function UserInfo() {
         <>
             <Header title="Join Circle"/>
             <div className="user-info-container">
+                <img src="edit-profile.png" alt="edit profile" className="edit-profile-pic" />
                 <h2 className="user-info-title">Let's get some of your basic info</h2>
                 <div className="user-info-form">
                     <div className="user-info-form-items">
@@ -24,9 +25,12 @@ function UserInfo() {
                     Here is how your posts will appear
                 </div>
                 <div className="sample-post">
-                    <div className="post-user-info">
-                        <div className="post-username">Name</div>
-                        <div className="post-time">Today 7 pm</div>
+                    <div className="profile-container">
+                        <img className="profile-pic" src="profile.jpg" alt="profile pic" />
+                        <div className="post-user-info">
+                            <div className="post-username">Name</div>
+                            <div className="post-time">Today 7 pm</div>
+                        </div>
                     </div>
                     <div className="post-content">
                         I'm so excited to join circle

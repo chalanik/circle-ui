@@ -7,7 +7,6 @@
 .user-info-title {
     font-weight: normal;
     font-size: 1.8em;
-    margin-top: 8%;
 }
 
 .user-info-form {
@@ -62,6 +61,25 @@
     color: #808080;
 }
 
-.continue-button-container {
+.profile-container {
+    display: flex;
+}
+
+.profile-pic {
+    height: 50px;
+    width: 50px;
+}
+
+.post-user-info {
+    margin-left: 2%;
+}
+
+.edit-profile-pic {
+    height: 120px;
+    width: 120px;
     margin-top: 5%;
+}
+
+.continue-button-container {
+    margin: 5% 0;
 }
