@@ -1,8 +1,8 @@
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Welcome from './Welcome';
-import UserInfo from './UserInfo';
+import Welcome from './Pages/Welcome/Welcome';
+import UserInfo from './Pages/UserInfo/UserInfo';
 
 const theme = createTheme({
   palette: {

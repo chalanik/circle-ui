@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import './Welcome.css';
-import Header from './Header';
+import Header from '../../Layout/Header';
 
 function Welcome() {
     return (

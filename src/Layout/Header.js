@@ -6,8 +6,8 @@ function Header(props) {
         <header className="header">
             <div className="header-container">
                 <div className="header-container-items">
-                    <b>Circle</b>
-                    <span class="header-company-name">by Morgan Stanley</span>
+                    <span className="header-app-title">Circle</span>
+                    <span className="header-company-name">by Morgan Stanley</span>
                 </div>
                 <div className="header-container-items header-title">{props.title}</div>
                 <div className="header-container-items header-close">X</div>
