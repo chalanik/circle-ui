@@ -1,12 +1,53 @@
+.welcome-container-wrapper {
+    background-color: #f0f0f0;
+}
+
 .welcome-container {
     margin: 0px auto;
+    width: 80%;
+    background-color: white;
     text-align: center;
+}
+
+.welcome-image {
+    height: 400px;
+    width: 100%;
 }
 
 .welcome-title {
     text-align: center;
     font-size: 2em;
-    margin: 20px 0;
+    padding: 20px 0;
+}
+
+.welcome-image-container {
+    position: relative;
+}
+
+.welcome-image-div {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    width: 50%;
+    height: 75%;
+    background-color: black;
+    color: white;
+    opacity: 0.8;
+    text-align: start;
+    padding: 20px;
+}
+
+.welcome-text-content {
+    width: 90%;
+    font-size: 1.25rem;
+    padding: 40px 40px 40px 0;
+    line-height: 1.5;
+}
+
+.welcome-text {
+    padding-top: 40px;
+    font-size: 3rem;
+    font-weight: 100;
 }
 
 .about-container {

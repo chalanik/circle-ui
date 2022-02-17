@@ -10,7 +10,7 @@ function Header(props) {
                     <span className="header-company-name">by Morgan Stanley</span>
                 </div>
                 <div className="header-container-items header-title">{props.title}</div>
-                <div className="header-container-items header-close">X</div>
+                <div className="header-container-items header-close"></div>
             </div>
         </header>
     );

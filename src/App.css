@@ -8,6 +8,11 @@
  -webkit-font-smoothing: antialiased;
 }
 
+div, p {
+  margin: o;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }

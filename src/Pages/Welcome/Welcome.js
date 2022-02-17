@@ -8,7 +8,23 @@ function Welcome() {
     return (
         <>
         <Header />
+        <div className="welcome-container-wrapper">
         <div className="welcome-container">
+            <div className="welcome-image-container">
+                <img src="./welcome.png" className="welcome-image" />
+                <div className="welcome-image-div">
+                    <div className="welcome-text">Welcome to Circle</div>
+                    <div className="welcome-text-content">
+                        jkhdjsfh slkjfskdlfj kljfklsjflrk kfljkler frjrlej ffrejklarg eark
+                        gjefgjsr jkhfskj hkfjhej kjf gffgfg jgjhj jhjkkj jhjgyff fdghjhjgj
+                    </div>
+                    <div>
+                        <Link className="get-started-link" to="/user-info">
+                            <Button color="primary" variant="contained">Get started</Button>
+                        </Link>
+                     </div>
+                </div>
+            </div>
             <div className="welcome-title">How Circle works</div>
             <div className="about-container">
                 <div className="about-container-items">
@@ -32,6 +48,7 @@ function Welcome() {
                     <Button color="primary" variant="contained">Get started</Button>
                 </Link>
             </div>
+        </div>
         </div>
         </>
     );

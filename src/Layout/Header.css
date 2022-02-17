@@ -1,6 +1,6 @@
 .header {
     padding: 25px;
-    border-bottom: 2px solid gray;
+    border-bottom: 3px solid #d3d3d3;
 }
 
 .header-container {
@@ -29,5 +29,32 @@
 }
 
 .header-close {
-    text-align: end;
-}
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+    cursor: pointer;
+   }
+   
+.header-close::after,
+.header-close::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    top: 8px;
+    left: 1px
+   }
+   
+   .header-close::after {
+    transform: rotate(-45deg)
+   } 
