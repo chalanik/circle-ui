@@ -9,8 +9,7 @@
 }
 
 .header-container-items {
-    padding: 0 25px 0 25px;
-    width: 33%;
+    width: 12%;
 }
 
 .header-company-name {
@@ -25,7 +24,6 @@
 
 .header-title {
     font-weight: 600;
-    text-align: center;
 }
 
 .header-close {

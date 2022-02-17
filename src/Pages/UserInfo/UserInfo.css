@@ -1,11 +1,13 @@
 .user-info-container {
     margin: 0 auto;
-    width: 80%;
+    width: 50%;
     text-align: center;
 }
 
 .user-info-title {
     font-weight: normal;
+    font-size: 1.8em;
+    margin-top: 8%;
 }
 
 .user-info-form {
@@ -14,18 +16,52 @@
 }
 
 .user-info-form-items {
-    padding: 10px 30px;
-    width: 25%;
+    padding: 0 30px 0 0;
+    width: 50%;
     text-align: start;
 }
 
 .user-info-form-label {
     text-align: start;
-    font-size: 0.8em;
+    font-size: 0.75em;
     margin: 5px 0;
 }
 
 .user-info-form-text {
     width: 100%;
-    height: 50%;
+    height: 60%;
+}
+
+.posts-container {
+    margin-top: 10%;
+    font-weight: 600;
+    font-size: 1.2em;
+    text-align: start;
+}
+
+.sample-post {
+    border: 1px solid #d3d3d3;
+    border-radius: 7px;
+    height: 150px;
+    margin-top: 5%;
+    text-align: start;
+    padding: 10px;
+}
+
+.post-content {
+    margin-top: 4%;
+    font-size: 1.2em;
+}
+
+.post-username {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.post-time {
+    color: #808080;
+}
+
+.continue-button-container {
+    margin-top: 5%;
 }
