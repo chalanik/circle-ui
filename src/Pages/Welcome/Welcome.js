@@ -28,16 +28,19 @@ function Welcome() {
             <div className="welcome-title">How Circle works</div>
             <div className="about-container">
                 <div className="about-container-items">
+                    <img src="personal-details.png" alt="personal details" className="personal-details-image"/>
                     <div className="about-items">Tell us about you</div>
-                    <p>Conform a couple details about yourself</p>
+                    <p>Confirm a couple details about yourself</p>
                 </div>
                 <div className="about-container-items">
+                    <img src="hobbies.png" alt="hobbies" className="personal-details-image"/>
                    <div className="about-items"> Tell us about your interests </div>
                    <p>Based on your interests, we will add you to Circles that align with them.
                        You can add and remove Circles at anytime.
                    </p>
                 </div>
                 <div className="about-container-items">
+                    <img src="colleagues.jpg" alt="colleagues" className="personal-details-image"/>
                     <div className="about-items"> Connect with colleagues </div>
                     <p>Connect with colleagues</p>
                 </div>
