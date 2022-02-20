@@ -1,15 +1,30 @@
 .header {
-    padding: 25px;
+    padding: 15px;
     border-bottom: 3px solid #d3d3d3;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;;
+}
+
+.header-company-name-container {
+    margin-left: 4%;
 }
 
 .header-container-items {
-    width: 12%;
+    width: 50%;
+}
+
+.circle-logo {
+    height: 40px;
+    width: 45px;
 }
 
 .header-company-name {
@@ -26,7 +41,7 @@
     font-weight: 600;
 }
 
-.header-close {
+/* .header-close {
     box-sizing: border-box;
     position: relative;
     display: block;
@@ -55,4 +70,4 @@
    
    .header-close::after {
     transform: rotate(-45deg)
-   } 
+   }  */

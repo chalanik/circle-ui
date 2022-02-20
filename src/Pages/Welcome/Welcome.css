@@ -42,12 +42,14 @@
     font-size: 1.25rem;
     padding: 40px 40px 40px 0;
     line-height: 1.5;
+    color: white;
 }
 
 .welcome-text {
     padding-top: 40px;
     font-size: 3rem;
     font-weight: 100;
+    color: white;
 }
 
 .about-container {

@@ -7,7 +7,7 @@ import UserInfo from './Pages/UserInfo/UserInfo';
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1976d2",
+      main: "#187ABA",
       light: "#42a5f5",
       dark: "#1565c0"
     }

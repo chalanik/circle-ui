@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import './Welcome.css';
-import Header from '../../Layout/Header';
+import Header from '../../Layout/Header/Header';
+import CircleButton from '../../Layout/Button/CircleButton';
 
 function Welcome() {
     return (
@@ -20,7 +20,7 @@ function Welcome() {
                     </div>
                     <div>
                         <Link className="get-started-link" to="/user-info">
-                            <Button color="primary" variant="contained">Get started</Button>
+                            <CircleButton buttonText="Get started"></CircleButton>
                         </Link>
                      </div>
                 </div>
@@ -48,7 +48,7 @@ function Welcome() {
 
             <div className="welcome-button-container">
                 <Link className="get-started-link" to="/user-info">
-                    <Button color="primary" variant="contained">Get started</Button>
+                    <CircleButton buttonText="Get started"></CircleButton>
                 </Link>
             </div>
         </div>

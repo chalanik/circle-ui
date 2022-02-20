@@ -8,6 +8,10 @@
  -webkit-font-smoothing: antialiased;
 }
 
+div, h2 {
+  color: #333333;
+}
+
 div, p {
   margin: o;
   padding: 0;
