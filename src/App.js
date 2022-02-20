@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Welcome from './Pages/Welcome/Welcome';
 import UserInfo from './Pages/UserInfo/UserInfo';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 const theme = createTheme({
   palette: {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/user-info" element={<UserInfo />} />
+            <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
