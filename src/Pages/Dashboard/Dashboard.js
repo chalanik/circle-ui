@@ -3,6 +3,8 @@ import './Dashboard.css';
 import Header from '../../Layout/Header/Header';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import Post from '../../Layout/Post/Post';
 import YourCircles from '../../Layout/YourCircles/YourCircles';
 
@@ -29,7 +31,19 @@ function Dashboard() {
 
                 </div>
                 <div className="dashboard-right-section">
-                    <div className="dashboard-heading circles-conversation-heading">Conversations in your Circle</div>
+                    <div className="dashboard-heading-container">
+                        <div className="dashboard-heading circles-conversation-heading">Conversations in your Circle</div>
+                        <div className="circle-sort-container">
+                            <span>Sort by</span>
+                            <Select className="circle-sort-select"
+                                value="Popular"
+                                // onChange={handleChange}
+                            >
+                                <MenuItem value={"Popular"}>Popular</MenuItem>
+                                <MenuItem value={"Latest"}>Latest</MenuItem>
+                            </Select>
+                        </div>
+                    </div>
                     <div className="dashboard-post-container">
                         <Post 
                             postTopic={"Education"}

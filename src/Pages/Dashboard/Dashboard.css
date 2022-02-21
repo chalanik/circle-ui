@@ -29,6 +29,10 @@
     margin: 5%;
 }
 
+.circle-sort-select {
+    height: 70%;
+}
+
 .dashboard-trending-topics-subheading {
     font-size: 14px;
     margin-left: 5%;
@@ -40,4 +44,17 @@
 
 .dashboard-post-container {
     margin: 20px 0;
+}
+
+.dashboard-heading-container {
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+}
+
+.circle-sort-container {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    padding-top: 25px;
 }
