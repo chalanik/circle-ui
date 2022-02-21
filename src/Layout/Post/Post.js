@@ -3,26 +3,39 @@ import './Post.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-function Post() {
+function Post({postTopic, userName, postTimestamp, postContent}) {
+
+    function getIconPath(topic) {
+        switch(topic) {
+            case 'Education':
+                return 'education-icon.svg';
+            case 'Nutrition':
+                return 'nutrition-icon.svg';
+            case 'Financial planning / budgeting':
+                return 'finance-budgeting-icon';
+            default:
+                return '';
+        }
+    }
+
     return (
         <Card>
             <CardContent>
                 <div className="circle-name-container">
-                    <img src="education-icon.svg" alt="education icon"/>
-                        <div className="circle-name-title">Education</div>
+                    <img src={getIconPath(postTopic)} alt="education icon"/>
+                        <div className="circle-name-title">{postTopic}</div>
                     </div>
                     <div className="circle-post-container">
                         <div className="profile-container">
                             <img className="profile-pic" src="profile.jpg" alt="profile pic" />
                             <div className="post-user-info">
-                                <div className="post-username">Jessica M.</div>
-                                <div className="post-time">Today 11:23 am</div>
+                                <div className="post-username">{userName}</div>
+                                <div className="post-time">{postTimestamp}</div>
                             </div>
                         </div>
                         <div className="post-content">
-                            Thinking baout holding my son back from Kindergarten this year.
-                            Anyone lese doing the same?
-                    </div>
+                            {postContent}
+                        </div>
                 </div>
             </CardContent>
         </Card>

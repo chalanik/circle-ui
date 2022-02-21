@@ -60,8 +60,22 @@ function Dashboard() {
                 </div>
                 <div className="dashboard-right-section">
                     <div className="dashboard-heading circles-conversation-heading">Conversations in your Circle</div>
-                    <div className="dashboard-post-container"><Post /></div>
-                    <div><Post /></div>
+                    <div className="dashboard-post-container">
+                        <Post 
+                            postTopic={"Education"}
+                            userName={"Jessica M."}
+                            postTimestamp={"Today 11:23 am"}
+                            postContent={"Thinking baout holding my son back from Kindergarten this year.Anyone lese doing the same?"}
+                        />
+                    </div>
+                    <div>
+                        <Post
+                            postTopic={"Nutrition"}
+                            userName={"Katie B."}
+                            postTimestamp={"Today 6 pm"}
+                            postContent={"When did everyone start giving their baby solids?"}
+                        />
+                    </div>
                 </div>
                 <div className="dasboard-space-container"></div>
             </div>

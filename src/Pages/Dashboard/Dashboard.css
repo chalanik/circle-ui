@@ -48,6 +48,7 @@
 .circle-name-container {
     display: flex;
     margin: 20px 0;
+    align-items: center;
 }
 
 .circle-name-title {
