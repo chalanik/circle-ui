@@ -1,6 +1,14 @@
 {
-    "navigationFallback": {
-      "rewrite": "/index.html",
-      "exclude": ["./*.{png,jpg,gif,ttf,json,ico,txt}", "static/css/*", "static/js/*"]
-    }
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "./*.{png,jpg,gif,ttf,json,ico,txt}",
+      "static/css/*",
+      "static/js/*"
+    ]
+  },
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
   }
+}
