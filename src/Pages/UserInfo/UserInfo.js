@@ -20,7 +20,7 @@ function UserInfo() {
         <>
             <Header title="Join Circle"/>
             <div className="user-info-container">
-                <img src="basic-info.png" alt="edit profile" className="edit-profile-pic" />
+                <img src="basic-info.svg" alt="edit profile" className="edit-profile-pic" />
                 <h2 className="user-info-title">Let's get some of your basic info</h2>
                 <div className="user-info-form">
                     <div className="user-info-form-items">

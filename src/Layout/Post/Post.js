@@ -8,7 +8,7 @@ function Post() {
         <Card>
             <CardContent>
                 <div className="circle-name-container">
-                    <img src="education-icon.png" alt="education icon"/>
+                    <img src="education-icon.svg" alt="education icon"/>
                         <div className="circle-name-title">Education</div>
                     </div>
                     <div className="circle-post-container">

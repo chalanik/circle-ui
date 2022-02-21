@@ -19,15 +19,15 @@ function Dashboard() {
                                 <div className="circle-manage-title">Manage</div>
                             </div>
                             <div className="circle-name-container">
-                                <img src="education-icon.png" alt="education icon"/>
+                                <img src="education-icon.svg" alt="education icon"/>
                                 <div className="circle-name-title">Education</div>
                             </div>
                             <div className="circle-name-container">
-                                <img src="finance-budgeting-icon.png" alt="financial budgeting icon"/>
+                                <img src="finance-budgeting-icon.svg" alt="financial budgeting icon"/>
                                 <div className="circle-name-title">Financial planning / budgeting</div>
                             </div>
                             <div className="circle-name-container">
-                                <img src="nutrition-icon.png" alt="nutrition icon"/>
+                                <img src="nutrition-icon.svg" alt="nutrition icon"/>
                                 <div className="circle-name-title">Nutrition</div>
                             </div>
                             <div className="circle-name-container">
