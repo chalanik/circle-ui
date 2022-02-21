@@ -11,7 +11,7 @@ function Welcome() {
         <div className="welcome-container-wrapper">
         <div className="welcome-container">
             <div className="welcome-image-container">
-                <img src="./welcome.png" alt="Welcome to Circle" className="welcome-image" />
+                <img src="./welcome.jpg" alt="Welcome to Circle" className="welcome-image" />
                 <div className="welcome-image-div">
                     <div className="welcome-text">Welcome to Circle</div>
                     <div className="welcome-text-content">
