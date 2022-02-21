@@ -29,7 +29,7 @@ jobs:
       
       # Zip artifacts to speed things up
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -qr -x "node_modules/*" "build/*"
+        run: zip release.zip build/* -qr
       # We exclude node_modules and dist because the Azure Oryx/Kudu deploy runs npm install and rebuilds everything anyway...
       # If we zip them we just increase the size of the zip file and it's not needed
 
@@ -52,11 +52,6 @@ jobs:
         with:
           name: node-app
 
-      - name: Unzip artifact for deployment
-        run: |
-          unzip -q release.zip
-          rm release.zip
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -64,4 +59,4 @@ jobs:
           app-name: 'ms-circle'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F8ED7EE543F547F3AF9870396B2680BD }}
-          package: .
+          package: release.zip
