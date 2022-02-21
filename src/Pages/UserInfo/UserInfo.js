@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Layout/Header/Header';
 import CircleButton from '../../Layout/Button/CircleButton';
-import TextField from '@material-ui/core/TextField';
-import InfoOutlined from '@material-ui/icons/InfoOutlined';
+import TextField from '@mui/material/TextField';
+import InfoOutlined from '@mui/icons-material/InfoOutlined';
 import './UserInfo.css';
 
 function UserInfo() {

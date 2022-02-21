@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Welcome from './Pages/Welcome/Welcome';
