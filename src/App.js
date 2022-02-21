@@ -5,6 +5,7 @@ import './App.css';
 import Welcome from './Pages/Welcome/Welcome';
 import UserInfo from './Pages/UserInfo/UserInfo';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import Dependents from './Pages/Dependents/Dependents';
 
 const theme = createTheme({
   palette: {
@@ -36,6 +37,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/user-info" element={<UserInfo />} />
+            <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>

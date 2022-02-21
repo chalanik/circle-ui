@@ -1,0 +1,51 @@
+.dependents-checkbox {
+    font-family: Karla;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dependents-checkbox-container {
+    text-align: start;
+    border-bottom: 1px solid #e4e4e4;
+    width: 50%;
+}
+
+.dependents-age-dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 4% 2% 0 0;
+}
+
+.dependent-age-text {
+    align-self: start;
+}
+
+.dependents-info-container {
+    display: flex;
+}
+
+.dependent-age-select {
+    height: 50%;
+}
+
+.add-another-dependent {
+    font-size: 15px;
+    color: #187ABA;
+    cursor: pointer;
+    text-align: start;
+}
+
+.navigation-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dependent-back-link {
+    margin-right: 5%;
+}
+
+.continue-button-container {
+    margin-right: 10%;
+}
