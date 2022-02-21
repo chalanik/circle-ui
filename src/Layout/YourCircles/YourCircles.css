@@ -1,0 +1,38 @@
+.your-circles {
+    margin: 5%;
+}
+
+.your-circles-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-heading {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.circle-manage-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: right;
+    color: #187ABA;
+    cursor: pointer;
+}
+
+.circle-name-container {
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.circle-name-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #187ABA;
+    cursor: pointer;
+    margin-left: 15px;
+}

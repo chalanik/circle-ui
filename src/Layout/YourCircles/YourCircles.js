@@ -1,0 +1,40 @@
+import React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import './YourCircles.css';
+
+function YourCircles({circlesArray}) {
+
+    function getIconPath(topic) {
+        switch(topic) {
+            case 'Education':
+                return 'education-icon.svg';
+            case 'Nutrition':
+                return 'nutrition-icon.svg';
+            case 'Financial planning / budgeting':
+                return 'finance-budgeting-icon.svg';
+            default:
+                return 'circle-name-icon.png';
+        }
+    }
+
+    return (
+        <Card className="your-circles">
+            <CardContent>
+                <div className="your-circles-heading">
+                    <div className="dashboard-heading">Your Circles</div>
+                    <div className="circle-manage-title">Manage</div>
+                </div>
+                {circlesArray.map(name => (  
+                    <div className="circle-name-container">
+                    <img src={getIconPath(name)} alt={name}/>
+                    <div className="circle-name-title">{name}</div>
+                </div> 
+                ))}  
+            </CardContent>
+        </Card>
+    );
+}
+
+export default YourCircles;
+

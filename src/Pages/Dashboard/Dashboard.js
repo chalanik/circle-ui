@@ -4,6 +4,7 @@ import Header from '../../Layout/Header/Header';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Post from '../../Layout/Post/Post';
+import YourCircles from '../../Layout/YourCircles/YourCircles';
 
 function Dashboard() {
     return (
@@ -12,38 +13,7 @@ function Dashboard() {
             <div className="dashboard-container">
                 <div className="dasboard-space-container"></div>
                 <div className="dashboard-left-section">
-                    <Card className="your-circles">
-                        <CardContent>
-                            <div className="your-circles-heading">
-                                <div className="dashboard-heading">Your Circles</div>
-                                <div className="circle-manage-title">Manage</div>
-                            </div>
-                            <div className="circle-name-container">
-                                <img src="education-icon.svg" alt="education icon"/>
-                                <div className="circle-name-title">Education</div>
-                            </div>
-                            <div className="circle-name-container">
-                                <img src="finance-budgeting-icon.svg" alt="financial budgeting icon"/>
-                                <div className="circle-name-title">Financial planning / budgeting</div>
-                            </div>
-                            <div className="circle-name-container">
-                                <img src="nutrition-icon.svg" alt="nutrition icon"/>
-                                <div className="circle-name-title">Nutrition</div>
-                            </div>
-                            <div className="circle-name-container">
-                                <img src="circle-name-icon.png" alt="circle placeholder icon"/>
-                                <div className="circle-name-title">Childcare</div>
-                            </div>
-                            <div className="circle-name-container">
-                                <img src="circle-name-icon.png" alt="circle placeholder icon"/>
-                                <div className="circle-name-title">Elderly Care</div>
-                            </div>
-                            <div className="circle-name-container">
-                                <img src="circle-name-icon.png" alt="circle placeholder icon"/>
-                                <div className="circle-name-title">Activities</div>
-                            </div>
-                        </CardContent>
-                    </Card>
+                    <YourCircles circlesArray={["Education", "Financial planning / budgeting", "Nutrition", "Childcare", "Elderly Care", "Activities"]}/>
 
                     <Card className="your-circles">
                         <CardContent>
