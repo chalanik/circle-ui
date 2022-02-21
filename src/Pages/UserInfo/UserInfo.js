@@ -63,7 +63,7 @@ function UserInfo() {
                     </div>
                 </div>
                 <div className="continue-button-container" onClick={continueClickHandler}>
-                    <Link className="get-started-link" to="/">
+                    <Link className="get-started-link" to="/dashboard">
                         <CircleButton buttonText="Continue"></CircleButton>
                     </Link>
                 </div>
