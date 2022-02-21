@@ -19,7 +19,7 @@
 }
 
 .header-container-items {
-    width: 50%;
+    width: 16%;
 }
 
 .circle-logo {
@@ -39,6 +39,16 @@
 
 .header-title {
     font-weight: 600;
+    text-align: center;
+}
+
+.user-header-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-header-container-items {
+    margin: 0 4%;
 }
 
 /* .header-close {

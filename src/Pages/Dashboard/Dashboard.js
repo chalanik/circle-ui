@@ -11,7 +11,7 @@ import YourCircles from '../../Layout/YourCircles/YourCircles';
 function Dashboard() {
     return (
         <>
-            <Header />
+            <Header dashboard={"true"}/>
             <div className="dashboard-container">
                 <div className="dasboard-space-container"></div>
                 <div className="dashboard-left-section">
@@ -34,7 +34,7 @@ function Dashboard() {
                     <div className="dashboard-heading-container">
                         <div className="dashboard-heading circles-conversation-heading">Conversations in your Circle</div>
                         <div className="circle-sort-container">
-                            <span>Sort by</span>
+                            <span className="sort-by-text">Sort by</span>
                             <Select className="circle-sort-select"
                                 value="Popular"
                                 // onChange={handleChange}
