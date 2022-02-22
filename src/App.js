@@ -8,6 +8,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Dependents from './Pages/Dependents/Dependents';
 import Circle from './Pages/Circle/Circle';
 import Post from './Pages/Discussion/Discussion';
+import Launch from './Pages/Launch/Launch';
 
 const theme = createTheme({
   palette: {
@@ -37,7 +38,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Welcome />} />
+            <Route path="/" element={<Launch />} />
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/user-info" element={<UserInfo />} />
             <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
