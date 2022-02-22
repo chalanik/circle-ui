@@ -7,6 +7,7 @@ import UserInfo from './Pages/UserInfo/UserInfo';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Dependents from './Pages/Dependents/Dependents';
 import Circle from './Pages/Circle/Circle';
+import Post from './Pages/Discussion/Discussion';
 
 const theme = createTheme({
   palette: {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/circle" element={<Circle />} />
+            <Route path="/test" element={<Post />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

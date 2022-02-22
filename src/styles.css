@@ -27,6 +27,10 @@ h3,
 div {
   margin: 0;
   padding: 0;
+  margin-block-start: 0px;
+  margin-block-end: 0pc;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 .type-body {
@@ -67,4 +71,8 @@ div {
   color: var(--primary-grey);
   font-weight: 300;
   font-size: 30px;
+}
+
+.color-secondary-grey {
+  color: var(--secondary-grey);
 }
