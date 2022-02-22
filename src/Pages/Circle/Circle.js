@@ -5,7 +5,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import Post from "../../Layout/Post/Post";
 import CircleButton from "../../Layout/Button/CircleButton";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";

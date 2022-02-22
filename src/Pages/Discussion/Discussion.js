@@ -43,6 +43,7 @@ function Post(props, type) {
       <img
         className="author-img"
         src={props.user?.image ? props.user.image : "profile.jpg"}
+        alt=""
       />
       <div className="author-details ">
         <p className="author-name type-body-xs">{props.user.name}</p>
@@ -71,6 +72,7 @@ function Post(props, type) {
       <img
         className="circle-img"
         src={props.circle?.image ? props.circle.image : "nutrition-icon.svg"}
+        alt=""
       />
       <p className="circle-name type-body-bold-xl">{props.circle.name}</p>
     </div>
@@ -88,7 +90,7 @@ function Post(props, type) {
   return (
     <Card>
       <CardContent>
-        {type == "circle" && circle}
+        {type === "circle" && circle}
         {post}
       </CardContent>
     </Card>
