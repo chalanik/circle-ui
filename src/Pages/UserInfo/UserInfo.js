@@ -52,7 +52,7 @@ function UserInfo() {
                 </div>
                 <div className="sample-post">
                     <div className="profile-container">
-                        <img className="profile-pic" src="profile.jpg" alt="profile pic" />
+                        <img className="profile-pic" src="profile-pic.svg" alt="profile pic" />
                         <div className="post-user-info">
                             <div className="post-username">Katie B.</div>
                             <div className="post-time">Today 7 pm</div>

@@ -45,8 +45,13 @@
 
 .circle-member-info {
     margin: 5px 10px;
+    display: flex;
 }
 
 .circle-name-title-container {
     margin-top: 15px;
+}
+
+.circle-member-info-text {
+    margin-left: 10px;
 }

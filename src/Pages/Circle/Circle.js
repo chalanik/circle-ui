@@ -7,6 +7,8 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Post from '../../Layout/Post/Post';
 import CircleButton from '../../Layout/Button/CircleButton';
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
 function Circle() {
 
@@ -21,8 +23,14 @@ function Circle() {
                     <div className="circle-name-title-container">
                         <div className="circle-name-title-header">Education</div>
                         <div className="circle-member-info-container">
-                            <div className="circle-member-info">135 members</div>
-                            <div className="circle-member-info">20 active now</div>
+                            <div className="circle-member-info">
+                                <PeopleOutlineIcon />
+                                <span className="circle-member-info-text">135 members </span>
+                            </div>
+                            <div className="circle-member-info">
+                                <RecordVoiceOverIcon />
+                                <span className="circle-member-info-text">20 active now </span>
+                            </div>
                         </div>
                     </div>
                 </div>

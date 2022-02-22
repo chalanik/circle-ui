@@ -30,6 +30,7 @@
 }
 
 .add-another-dependent {
+    display: flex;
     font-size: 15px;
     color: #187ABA;
     cursor: pointer;
@@ -48,4 +49,14 @@
 
 .continue-button-container {
     margin-right: 10%;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #187ABA;
+    font-size: 15px;
+}
+
+.add-dependent-icon {
+    margin-right: 10px;
 }
