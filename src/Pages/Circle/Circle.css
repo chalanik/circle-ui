@@ -1,0 +1,52 @@
+.dasboard-space-container {
+    width: 10%;
+}
+
+.circle-left-section {
+    width: 54%;
+}
+
+.circle-right-section {
+    width: 26%;
+}
+
+.your-circle-header-container {
+    width: 100%;
+    height: 90px;
+}
+
+.your-circle-name-container {
+    display: flex;
+    margin: 2% 10%;
+    align-items: center;
+}
+
+.education-icon {
+    height: 50px;
+}
+
+.circle-name-title-header {
+    font-size: 30px;
+    margin-left: 15px;
+}
+
+.your-circle-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leave-circle-button {
+    margin: 1.5% 11% 2% 2%;
+}
+
+.circle-member-info-container {
+    display: flex;
+}
+
+.circle-member-info {
+    margin: 5px 10px;
+}
+
+.circle-name-title-container {
+    margin-top: 15px;
+}
