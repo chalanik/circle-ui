@@ -55,3 +55,10 @@
 .circle-member-info-text {
     margin-left: 10px;
 }
+
+.post-container{
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+}
