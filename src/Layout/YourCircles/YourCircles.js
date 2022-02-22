@@ -14,7 +14,7 @@ function YourCircles({circlesArray}) {
             case 'Financial planning / budgeting':
                 return 'finance-budgeting-icon.svg';
             default:
-                return 'circle-name-icon.png';
+                return 'not-joined-circle.svg';
         }
     }
 
