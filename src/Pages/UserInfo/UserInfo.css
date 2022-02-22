@@ -5,8 +5,6 @@
 }
 
 .user-info-title {
-    font-weight: normal;
-    font-size: 1.8em;
     margin: 5%;
 }
 
@@ -28,6 +26,7 @@
     text-align: start;
     font-size: 0.75em;
     margin: 5px 0;
+
 }
 
 .user-info-form-text {

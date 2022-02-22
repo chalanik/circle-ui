@@ -2,6 +2,7 @@ import React from 'react';
 import './Post.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import '../../styles.css';
 
 function Post({postTopic, userName, postTimestamp, postContent}) {
 
@@ -23,7 +24,7 @@ function Post({postTopic, userName, postTimestamp, postContent}) {
             <CardContent>
                 <div className="circle-name-container">
                     <img src={getIconPath(postTopic)} alt="education icon"/>
-                        <div className="circle-name-title">{postTopic}</div>
+                        <div className="circle-name-title ">{postTopic}</div>
                     </div>
                     <div className="circle-post-container">
                         <div className="profile-container">
@@ -33,7 +34,7 @@ function Post({postTopic, userName, postTimestamp, postContent}) {
                                 <div className="post-time">{postTimestamp}</div>
                             </div>
                         </div>
-                        <div className="post-content">
+                        <div className="post-content type-h2">
                             {postContent}
                         </div>
                 </div>

@@ -5,6 +5,7 @@ import CircleButton from '../../Layout/Button/CircleButton';
 import TextField from '@mui/material/TextField';
 import InfoOutlined from '@mui/icons-material/InfoOutlined';
 import './UserInfo.css';
+import '../../styles.css';
 
 function UserInfo() {
 
@@ -21,7 +22,7 @@ function UserInfo() {
             <Header title="Join Circle"/>
             <div className="user-info-container">
                 <img src="basic-info.svg" alt="edit profile" className="edit-profile-pic" />
-                <h2 className="user-info-title">Let's get some of your basic info</h2>
+                <h2 className="user-info-title type-h1">Let's get some of your basic info</h2>
                 <div className="user-info-form">
                     <div className="user-info-form-items">
                         <div className="text-box-container">
