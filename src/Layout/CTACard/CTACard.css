@@ -1,0 +1,22 @@
+.cta-card {
+  background-color: #f8fdff;
+  border-left: 6px solid #187aba;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.cta-card-title {
+  font-weight: 700;
+  margin: 0;
+}
+
+.cta-card-description {
+  padding: 8px 0;
+  margin: 0;
+}
+
+.cta-card-link {
+  font-weight: 700;
+  text-decoration: none;
+  color: #187aba;
+}
