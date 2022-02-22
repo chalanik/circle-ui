@@ -11,12 +11,11 @@ function Welcome() {
         <div className="welcome-container-wrapper">
         <div className="welcome-container">
             <div className="welcome-image-container">
-                <img src="./welcome.jpg" alt="Welcome to Circle" className="welcome-image" />
+                <img src="welcome.svg" alt="Welcome to Circle" className="welcome-image" />
                 <div className="welcome-image-div">
                     <div className="welcome-text">Welcome to Circle</div>
                     <div className="welcome-text-content">
-                        jkhdjsfh slkjfskdlfj kljfklsjflrk kfljkler frjrlej ffrejklarg eark
-                        gjefgjsr jkhfskj hkfjhej kjf gffgfg jgjhj jhjkkj jhjgyff fdghjhjgj
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.
                     </div>
                     <div>
                         <Link className="get-started-link" to="/user-info">
@@ -25,24 +24,23 @@ function Welcome() {
                      </div>
                 </div>
             </div>
-            <div className="welcome-title">How Circle works</div>
             <div className="about-container">
                 <div className="about-container-items">
-                    <img src="personal-details.png" alt="personal details" className="personal-details-image"/>
-                    <div className="about-items">Tell us about you</div>
-                    <p>Confirm a couple details about yourself</p>
+                    <img src="basic-info.svg" alt="personal details" className="personal-details-image"/>
+                    <div className="about-items about-text-content">Tell us about you</div>
+                    <p className="about-text-content about-items-desc">Confirm a couple details about yourself</p>
                 </div>
                 <div className="about-container-items">
-                    <img src="hobbies.png" alt="hobbies" className="personal-details-image"/>
-                   <div className="about-items"> Tell us about your interests </div>
-                   <p>Based on your interests, we will add you to Circles that align with them.
+                    <img src="interested-topics-icon.svg" alt="hobbies" className="personal-details-image"/>
+                   <div className="about-items about-text-content"> Tell us about your interests </div>
+                   <p className="about-text-content about-items-desc">Based on your interests, we will add you to Circles that align with them.
                        You can add and remove Circles at anytime.
                    </p>
                 </div>
                 <div className="about-container-items">
-                    <img src="colleagues.jpg" alt="colleagues" className="personal-details-image"/>
-                    <div className="about-items"> Connect with colleagues </div>
-                    <p>Connect with colleagues</p>
+                    <img src="dependent-icon.svg" alt="colleagues" className="personal-details-image"/>
+                    <div className="about-items about-text-content"> Connect with colleagues </div>
+                    <p className="about-text-content about-items-desc">Connect with colleagues</p>
                 </div>
             </div>
 

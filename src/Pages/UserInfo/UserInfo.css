@@ -138,10 +138,3 @@
     visibility: visible;
     opacity: 1;
   }
-
-  .circle-button {
-    border-radius: 20px !important;
-    text-transform: none !important;
-    font-weight: bold;
-    font-size: 16px;
-  }
