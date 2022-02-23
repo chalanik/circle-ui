@@ -45,6 +45,9 @@
 
 .dashboard-post-container {
     margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
 }
 
 .dashboard-heading-container {

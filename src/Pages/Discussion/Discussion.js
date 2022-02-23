@@ -10,34 +10,31 @@ function getTimeString(timestamp) {
   const date = new Date(timestamp);
   const today = new Date();
   const yesterday = new Date(today.getTime() - 24 * 60 * 60 * 1000);
-  const options = {
+  const dateOptions = {
     weekday: "short",
     year: "numeric",
     month: "short",
   };
 
+  const timeOptions = {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+
   if (date.getDate() === today.getDate()) {
-    return `Today, ${date.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-    })}`;
+    return `Today, ${date.toLocaleTimeString(undefined, timeOptions)}`;
   } else if (date.getDate() === yesterday.getDate()) {
-    return `Yesterday, ${date.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-    })}`;
+    return `Yesterday, ${date.toLocaleTimeString(undefined, timeOptions)}`;
   } else {
     return `${date.toLocaleDateString(
       undefined,
-      options
-    )}, ${date.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-    })}`;
+      dateOptions
+    )}, ${date.toLocaleTimeString(undefined, timeOptions)}`;
   }
 }
 
-function Post(props, type) {
+function Post(props) {
   const author = (
     <div className="author-card">
       <img
@@ -90,7 +87,7 @@ function Post(props, type) {
   return (
     <Card>
       <CardContent>
-        {type === "circle" && circle}
+        {props?.showCircle && circle}
         {post}
       </CardContent>
     </Card>

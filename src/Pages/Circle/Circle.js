@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import CircleButton from "../../Layout/Button/CircleButton";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
-import PostCard from "../Discussion/Discussion";
+import Post from "../../Layout/Post/Post";
 
 function Circle() {
   const circle = {
@@ -104,7 +104,7 @@ function Circle() {
           </div>
           <div className="post-container">
             {circle.posts.map((res) => {
-              return <PostCard {...res} key={res._id} />;
+              return <Post {...res} key={res._id} />;
             })}
           </div>
         </div>

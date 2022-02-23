@@ -7,14 +7,32 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Post from "../../Layout/Post/Post";
 import YourCircles from "../../Layout/YourCircles/YourCircles";
-import CTACard from "../../Layout/CTACard/CTACard";
 
-const ctaProps = {
-  title: "Open a 529",
-  description: "Lorem ipsum lorem ipsum lorem ipsum",
-  linkText: "Build a customized portfolio today",
-  link: "",
-};
+const posts = [
+  {
+    _id: "620e7d3366d8d74efc3b2305",
+    description:
+      "What worked for me was to remove an item until I didn't crave it anymore instead of going completely cold turkey.",
+    title: "Best strategies for kicking a sugar addiction?",
+    user: { _id: "620e4979dc557df876cc5842", name: "Nikhil Chalamalla" },
+    comments: ["620f3f0744d4409b30a648f7"],
+    createdAt: "2022-02-17T16:52:03.601Z",
+    circle: { _id: "620e4ae4dc557df876cc584c", name: "Nutrition" },
+    __v: 0,
+  },
+  {
+    _id: "620e866eb4f4e0d8878d3e35",
+    description:
+      "All else being equal, if I hypothetically just added a couple of tablespoons of olive oil to my day, is that actually healthier?",
+    title:
+      '"Olive Oil is healthy," alright, but clarification needed: is it intrinsically healthy or only when it replaces unhealthy fats?',
+    user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
+    comments: [],
+    createdAt: "2022-02-23T05:24:52.716Z",
+    circle: { _id: "620e4ae4dc557df876cc584c", name: "Education" },
+    __v: 0,
+  },
+];
 
 function Dashboard() {
   return (
@@ -70,26 +88,9 @@ function Dashboard() {
             </div>
           </div>
           <div className="dashboard-post-container">
-            <Post
-              postTopic={"Education"}
-              userName={"Jessica M."}
-              postTimestamp={"Today 11:23 am"}
-              postContent={
-                "Thinking baout holding my son back from Kindergarten this year.Anyone lese doing the same?"
-              }
-            />
-
-            <CTACard props={ctaProps}></CTACard>
-            <div>
-              <Post
-                postTopic={"Nutrition"}
-                userName={"Katie B."}
-                postTimestamp={"Today 6 pm"}
-                postContent={
-                  "When did everyone start giving their baby solids?"
-                }
-              />
-            </div>
+            {posts.map((res) => {
+              return <Post {...res} showCircle={true} />;
+            })}
           </div>
         </div>
         <div className="dasboard-space-container"></div>
