@@ -1,28 +1,44 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import Header from '../../Layout/Header/Header';
 import CircleButton from '../../Layout/Button/CircleButton';
 
 function Welcome() {
 
+    const navigate = useNavigate();
+
+    let isUserRegistered = false;
+
     const fetchUsers = async () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('id');
+        let userId = urlParams.get('id');
+        userId = userId || 'siha';
         let user = { 'msid': userId };
-        localStorage.setItem('userFormData', JSON.stringify(user));
-        console.log(user);
 
         const response = await fetch(
-            "https://express-nikhil.azurewebsites.net/api/v1/user/siha"
+            `https://express-nikhil.azurewebsites.net/api/v1/user/${userId}`
           );
          const data = await response.json();
-         console.log(data);
+         if(data) {
+            isUserRegistered = true;
+            localStorage.setItem('userInfo', JSON.stringify(data));
+         } else {
+            localStorage.setItem('userFormData', JSON.stringify(user));
+         }
         };
     
     useEffect( () => {
         fetchUsers();
     }, []);
+
+    function getStartedClick() {
+        if(isUserRegistered) {
+            navigate("/dashboard");
+        } else {
+            navigate("/user-info");
+        }
+    }
 
     return (
         <>
@@ -37,9 +53,7 @@ function Welcome() {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.
                     </div>
                     <div>
-                        <Link className="get-started-link" to="/user-info">
-                            <CircleButton buttonText="Get started"></CircleButton>
-                        </Link>
+                        <CircleButton buttonText="Get started" onClick={getStartedClick}></CircleButton>
                      </div>
                 </div>
             </div>
@@ -64,9 +78,7 @@ function Welcome() {
             </div>
 
             <div className="welcome-button-container">
-                <Link className="get-started-link" to="/user-info">
-                    <CircleButton buttonText="Get started"></CircleButton>
-                </Link>
+                <CircleButton buttonText="Get started" onClick={getStartedClick}></CircleButton>
             </div>
         </div>
         </div>
