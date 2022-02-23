@@ -13,8 +13,9 @@ function UserInfo() {
     let user = {};
 
     function continueClickHandler() {
+        user = JSON.parse(localStorage.getItem('userFormData'));
         user = { ...user, 'zip': zip };
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('userFormData', JSON.stringify(user));
     }
 
     return (

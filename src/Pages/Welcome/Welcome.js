@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Welcome.css';
 import Header from '../../Layout/Header/Header';
 import CircleButton from '../../Layout/Button/CircleButton';
 
 function Welcome() {
+
+    const fetchUsers = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('id');
+        let user = { 'msid': userId };
+        localStorage.setItem('userFormData', JSON.stringify(user));
+        console.log(user);
+
+        const response = await fetch(
+            "https://express-nikhil.azurewebsites.net/api/v1/user/siha"
+          );
+         const data = await response.json();
+         console.log(data);
+        };
+    
+    useEffect( () => {
+        fetchUsers();
+    }, []);
+
     return (
         <>
         <Header />

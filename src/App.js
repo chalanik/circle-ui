@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -22,19 +21,7 @@ const theme = createTheme({
   }
 });
 
-function App() {
-
-  const fetchUsers = async () => {
-    const response = await fetch(
-        "https://express-nikhil.azurewebsites.net/api/v1/user/chalanik"
-      );
-     const data = await response.json();
-     console.log(data);
-    };
-
-  useEffect( () => {
-    fetchUsers();
-  }, []); 
+function App() { 
 
   return (
     <ThemeProvider theme={theme}>

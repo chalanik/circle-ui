@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Layout/Header/Header';
 import { Checkbox } from '@mui/material';
@@ -9,6 +9,37 @@ import './Topic.css';
 
 function Topics() {
 
+    const [circles, addCircles] = useState([]);
+    let user = {};
+
+    function continueClickHandler() {
+        user = JSON.parse(localStorage.getItem('userFormData'));
+        user = { ...user, 'circles': circles };
+        console.log(user);
+        localStorage.setItem('userFormData', JSON.stringify(user));
+        fetch(
+            "https://express-nikhil.azurewebsites.net/api/v1/user", {
+                method: "POST",
+                body: JSON.stringify({ user }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }
+        )
+        .then(response => response.json())
+        .then(json => console.log(json));
+    }
+
+    function manageCircles(event, circle) {
+        let isSelected = event.target.checked;
+        if(isSelected) {
+            addCircles([...circles, circle]);
+        } else {
+            let filteredArray = circles.filter(element => element !== circle );
+            addCircles([...filteredArray]);
+        }
+    }
+
     return (
         <>
             <Header title="Join Circle"/>
@@ -18,26 +49,41 @@ function Topics() {
                 <h3 className="topic-selection-desc">We call these topics "Circles" and we'll add you to the ones you're interested in. You can always add more later!</h3>
                 <FormGroup className="topic-selection-pool">
                     <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Education" />
+                        <FormControlLabel className="topic-selection-checkbox"
+                            control={<Checkbox  onChange={(event) => manageCircles(event, "Education")} />}
+                            label="Education" 
+                        />
                     </div>
                     <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Finance/Budgeting" />
+                        <FormControlLabel className="topic-selection-checkbox"
+                            control={<Checkbox onChange={(event) => manageCircles(event, "Finance/Budgeting")}/>}
+                            label="Finance/Budgeting"
+                        />
                     </div>
                     <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Nutrition" />
+                        <FormControlLabel className="topic-selection-checkbox"
+                            control={<Checkbox onChange={(event) => manageCircles(event, "Nutrition")}/>}
+                            label="Nutrition"
+                        />
                     </div>
                     <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Childcare" />
+                        <FormControlLabel className="topic-selection-checkbox"
+                            control={<Checkbox onChange={(event) => manageCircles(event, "Childcare")}/>}
+                            label="Childcare"
+                        />
                     </div>
                     <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Activities" />
+                        <FormControlLabel className="topic-selection-checkbox"
+                            control={<Checkbox onChange={(event) => manageCircles(event, "Activities")}/>}
+                            label="Activities"
+                        />
                     </div>
                 </FormGroup>
                 <div className="navigation-container">
                     <div className="dependent-back-link">
                         <Link className="back-link" to="/dependents">Back</Link>
                     </div>
-                    <div className="continue-button-container" >
+                    <div className="continue-button-container" onClick={continueClickHandler}>
                         <Link className="get-started-link" to="/dashboard">
                             <CircleButton buttonText="Continue"></CircleButton>
                         </Link>
