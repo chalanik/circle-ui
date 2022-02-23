@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import Header from '../../Layout/Header/Header';
 import CircleButton from '../../Layout/Button/CircleButton';
@@ -13,24 +13,25 @@ function Welcome() {
     const fetchUsers = async () => {
         const urlParams = new URLSearchParams(window.location.search);
         let userId = urlParams.get('id');
-        userId = userId || 'siha';
-        let user = { 'msid': userId };
+        let user = {};
 
         const response = await fetch(
             `https://express-nikhil.azurewebsites.net/api/v1/user/${userId}`
-          );
-         const data = await response.json();
-         if(data) {
+        );
+        const data = await response.json();
+        if(!data || data?.zip == null) {
+            user = { ...user, '_id': data?._id };
+            localStorage.setItem('userFormData', JSON.stringify(user));
+        } else {
             isUserRegistered = true;
             localStorage.setItem('userInfo', JSON.stringify(data));
-         } else {
-            localStorage.setItem('userFormData', JSON.stringify(user));
-         }
-        };
+        }
+    };
     
     useEffect( () => {
+        localStorage.clear();
         fetchUsers();
-    }, []);
+    });
 
     function getStartedClick() {
         if(isUserRegistered) {

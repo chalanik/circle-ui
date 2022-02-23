@@ -15,12 +15,12 @@ function Topics() {
     function continueClickHandler() {
         user = JSON.parse(localStorage.getItem('userFormData'));
         user = { ...user, 'circles': circles };
-        console.log(user);
         localStorage.setItem('userFormData', JSON.stringify(user));
+        let { zip, circles: userCircles } = user;
         fetch(
-            "https://express-nikhil.azurewebsites.net/api/v1/user", {
+            `https://express-nikhil.azurewebsites.net/api/v1/user/${user._id}`, {
                 method: "POST",
-                body: JSON.stringify({ user }),
+                body: JSON.stringify({ zip, userCircles }),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
