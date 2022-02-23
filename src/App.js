@@ -9,6 +9,7 @@ import Dependents from './Pages/Dependents/Dependents';
 import Circle from './Pages/Circle/Circle';
 import Launch from './Pages/Launch/Launch';
 import Discussion from './Pages/Discussion/Discussion';
+import ReplyDialog from './Layout/ReplyDialog/ReplyDialog';
 
 const theme = createTheme({
   palette: {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/circle" element={<Circle />} />
             <Route path="/post" element={<Discussion />} />
+            <Route path="/test" element={<ReplyDialog />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

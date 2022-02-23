@@ -9,10 +9,20 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
 import Post from "../../Layout/Post/Post";
 import "./Discussion.css";
-import '../../styles.css';
+import "../../styles.css";
 import { ArrowBack } from "@mui/icons-material";
+import ReplyDialog from "../../Layout/ReplyDialog/ReplyDialog";
 
 function Discussion(props) {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = (value) => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const post = {
     _id: "620e7d3366d8d74efc3b2305",
     description:
@@ -71,12 +81,17 @@ function Discussion(props) {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="circle-left-section">
-        <a className="post-back-button type-link-xl" href="/circle"><ArrowBack className="arrow-back"/> Back to main {post.circle.name}</a>
+          <a className="post-back-button type-link-xl" href="/circle">
+            <ArrowBack className="arrow-back" /> Back to main {post.circle.name}
+          </a>
           <Post {...post} key={post._id} isPost={true} />
           <div className="dashboard-heading-container">
             <div className="dashboard-heading circles-conversation-heading">
               <div>
-                <CircleButton buttonText="Post a reply"></CircleButton>
+                <CircleButton
+                  buttonText="Post a reply"
+                  onClick={handleClickOpen}
+                ></CircleButton>
               </div>
             </div>
             <div className="circle-sort-container">
@@ -114,6 +129,7 @@ function Discussion(props) {
         </div>
         <div className="dasboard-space-container"></div>
       </div>
+      <ReplyDialog open={open} onClose={handleClose}></ReplyDialog>
     </>
   );
 }

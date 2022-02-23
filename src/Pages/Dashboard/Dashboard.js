@@ -25,7 +25,7 @@ const posts = [
     description:
       "All else being equal, if I hypothetically just added a couple of tablespoons of olive oil to my day, is that actually healthier?",
     title:
-      '"Olive Oil is healthy," alright, but clarification needed: is it intrinsically healthy or only when it replaces unhealthy fats?',
+      'Thinking about holding my son back from Kindergarten this year. Anyone else doing the same?',
     user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
     comments: [],
     createdAt: "2022-02-23T05:24:52.716Z",
