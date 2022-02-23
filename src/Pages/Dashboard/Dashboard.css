@@ -66,3 +66,13 @@
 .sort-by-text {
     font-size: 14px;
 }
+
+@media (max-width: 767px) {
+    .dashboard-left-section {
+        display: none;
+    }
+
+    .dashboard-right-section {
+        width: 90%;
+    }
+}

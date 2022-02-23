@@ -60,3 +60,15 @@
 .add-dependent-icon {
     margin-right: 10px;
 }
+
+@media (max-width: 767px) {
+
+    .dependents-info-container {
+        flex-direction: column;
+    }
+
+    .dependents-age-dropdown {
+        width: 60%;
+    }
+
+}

@@ -62,3 +62,19 @@
     grid-template-columns: 1fr;
     grid-gap: 16px;
 }
+
+@media (max-width: 767px) {
+    .circle-right-section {
+        display: none;
+    }
+
+    .circle-left-section {
+        width: 90%;
+    }
+
+    .your-circle-header-container {
+        flex-direction: column;
+        align-items: center;
+        height: 190px;
+    }
+}
