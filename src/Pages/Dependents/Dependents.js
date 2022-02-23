@@ -63,7 +63,7 @@ function Dependents() {
                         <Link className="back-link" to="/user-info">Back</Link>
                     </div>
                     <div className="continue-button-container" >
-                        <Link className="get-started-link" to="/dashboard">
+                        <Link className="get-started-link" to="/pick-topic">
                             <CircleButton buttonText="Continue"></CircleButton>
                         </Link>
                     </div>

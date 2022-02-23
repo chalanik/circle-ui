@@ -1,0 +1,35 @@
+.topic-selection-container {
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.topic-selection-title {
+    margin-top: 5%;
+}
+
+.topic-selection-desc {
+    margin-top: 5%;
+    font-family: 'Karla';
+    font-size: 22.5px;
+    font-weight: bold;
+}
+
+.topic-selection-pool {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.topic-selection-checkbox {
+    font-family: Karla;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.topic-selection-checkbox-container {
+    text-align: start;
+    border-bottom: 0.75px solid #E5E5E5;
+    width: 50%;
+}
