@@ -13,12 +13,12 @@ function Topics() {
         <>
             <Header title="Join Circle"/>
             <div className="topic-selection-container">
-                <img src="basic-info.svg" alt="intrested topic" className="pick-topic-avatar" />
+                <img src="interested-topics-icon.svg" alt="intrested topic" className="pick-topic-avatar" />
                 <h2 className="topic-selection-title type-h1">What types of topics interest you ?</h2>
                 <h3 className="topic-selection-desc">We call these topics "Circles" and we'll add you to the ones you're interested in. You can always add more later!</h3>
                 <FormGroup className="topic-selection-pool">
                     <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox checked/>} label="Education" />
+                        <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Education" />
                     </div>
                     <div className="topic-selection-checkbox-container">
                         <FormControlLabel className="topic-selection-checkbox" control={<Checkbox />} label="Finance/Budgeting" />
