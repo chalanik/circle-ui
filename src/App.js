@@ -7,6 +7,7 @@ import UserInfo from './Pages/UserInfo/UserInfo';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Dependents from './Pages/Dependents/Dependents';
 import Circle from './Pages/Circle/Circle';
+import Topics from './Pages/Topic/Topic';
 import Launch from './Pages/Launch/Launch';
 import Discussion from './Pages/Discussion/Discussion';
 import ReplyDialog from './Layout/ReplyDialog/ReplyDialog';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={<Launch />} />
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/user-info" element={<UserInfo />} />
+            <Route path="/pick-topic" element={<Topics />} />
             <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/circle" element={<Circle />} />

@@ -1,0 +1,41 @@
+.topic-selection-container {
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.topic-selection-title {
+    margin-top: 5%;
+    color: #333333;
+}
+
+.topic-selection-desc {
+    margin-top: 3%;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 30px;
+    color: #333333;
+}
+
+.topic-selection-pool {
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+}
+
+.topic-selection-checkbox {
+    font-family: Karla;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.topic-selection-checkbox-container {
+    text-align: start;
+    border-bottom: 1px solid #E4E4E4;
+    width: 50%;
+    height: 50px;
+    color: #333333;
+}
