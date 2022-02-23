@@ -34,9 +34,9 @@ div {
 }
 
 .type-body {
-  font-family: Karla;
-  color: var(--primary-grey);
-  font-size: 16px;
+  font-family: Karla !important;
+  color: var(--primary-grey) !important;
+  font-size: 16px !important;
 }
 
 .type-body-xs {
@@ -53,10 +53,10 @@ div {
 }
 
 .type-body-bold-xl {
-  font-family: Karla;
-  color: var(--primary-grey);
-  font-size: 20px;
-  font-weight: 700;
+  font-family: Karla !important;
+  color: var(--primary-grey) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
 }
 
 .type-h2 {

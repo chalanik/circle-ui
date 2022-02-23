@@ -2,26 +2,41 @@ import * as React from "react";
 import CircleButton from "../Button/CircleButton";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
-import "./ReplyDialog.css";
+import "./PostDialog.css";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Switch from "@mui/material/Switch";
-import '../../styles.css';
+import "../../styles.css";
 
-export default function ReplyDialog(props) {
-  const { onClose, open } = props;
+export default function PostDialog(props) {
+  const { onClose, open, onPost } = props;
+
+  let post = { title: "", description: "" };
 
   const handleClose = () => {
     onClose();
+  };
+
+  const handlePost = () => {
+    onPost(post);
+    onClose();
+  };
+
+  const handleTitleChange = (e) => {
+    post = { ...post, title: e.target.value };
+  };
+
+  const handleDescChange = (e) => {
+    post = { ...post, description: e.target.value };
   };
 
   return (
     <div>
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle className="type-body-bold-xl">
-          Your reply
+          Your topic
           <IconButton
             aria-label="close"
             onClick={handleClose}
@@ -37,11 +52,23 @@ export default function ReplyDialog(props) {
         <DialogContent>
           <TextField
             id="outlined-multiline-static"
+            className="type-body"
+            label=""
+            multiline
+            fullWidth
+            rows={1}
+            placeholder="Your topic’s title. This is the preview people will see "
+            sx={{ paddingBottom: "16px" }}
+            onChange={handleTitleChange}
+          />
+          <TextField
+            id="outlined-multiline-static"
             label=""
             multiline
             fullWidth
             rows={6}
-            placeholder="This is where you can reply to the main topic"
+            onChange={handleDescChange}
+            placeholder="(Optional) This is where you can give any additional details about your topic or elaborate on any question you have"
           />
         </DialogContent>
         <div className="reply-dialog-actions">
@@ -49,8 +76,8 @@ export default function ReplyDialog(props) {
             <Switch /> <span>Post anonymously</span>
           </span>
           <CircleButton
-            onClick={handleClose}
-            buttonText="Post reply"
+            onClick={handlePost}
+            buttonText="Post topic"
           ></CircleButton>
         </div>
       </Dialog>
