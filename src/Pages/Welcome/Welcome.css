@@ -30,7 +30,7 @@
     top: 40px;
     left: 30px;
     width: 42%;
-    height: 80%;
+    height: 70%;
     background: rgba(0, 0, 0, 0.85);
     color: white;
     opacity: 0.8;
@@ -43,7 +43,7 @@
     width: 90%;
     font-size: 16px;
     font-weight: normal;
-    padding: 40px 40px 20px 0;
+    padding: 5% 10% 5% 0;
     line-height: 19px;
     letter-spacing: 0.46px;
     color: white;
@@ -51,7 +51,7 @@
 
 .welcome-text {
     font-family: MS Gloriola II Std;
-    padding-top: 40px;
+    padding-top: 7%;
     font-size: 46px;
     line-height: 50.6px;
     font-weight: 300;
@@ -104,4 +104,20 @@
 .about-text-content {
     text-align: start;
     margin: 2% 10% 2% 15%;
+}
+
+@media (max-width: 767px) {
+    .welcome-image-div { 
+        width:70%;
+        height: 75%;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-container-items {
+        width: 100%;
+        margin: 5% 0;
+    }
 }
