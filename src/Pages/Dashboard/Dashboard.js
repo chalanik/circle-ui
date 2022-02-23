@@ -89,7 +89,7 @@ function Dashboard() {
           </div>
           <div className="dashboard-post-container">
             {posts.map((res) => {
-              return <Post {...res} showCircle={true} />;
+              return <Post {...res} isPostWithCircle={true} />;
             })}
           </div>
         </div>

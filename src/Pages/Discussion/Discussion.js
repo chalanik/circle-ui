@@ -1,97 +1,121 @@
 import React from "react";
+import Header from "../../Layout/Header/Header";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import "../../styles.css";
-import CommentIcon from "@mui/icons-material/Comment";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import CircleButton from "../../Layout/Button/CircleButton";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
+import Post from "../../Layout/Post/Post";
 import "./Discussion.css";
+import '../../styles.css';
+import { ArrowBack } from "@mui/icons-material";
 
-//given Date timestamp, return the date in the form "Year-Month-Day, 12:00 PM"
-function getTimeString(timestamp) {
-  const date = new Date(timestamp);
-  const today = new Date();
-  const yesterday = new Date(today.getTime() - 24 * 60 * 60 * 1000);
-  const dateOptions = {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
+function Discussion(props) {
+  const post = {
+    _id: "620e7d3366d8d74efc3b2305",
+    description:
+      "What worked for me was to remove an item until I didn't crave it anymore instead of going completely cold turkey.",
+    title: "Best strategies for kicking a sugar addiction?",
+    user: { _id: "620e4979dc557df876cc5842", name: "Nikhil Chalamalla" },
+    comments: [
+      {
+        _id: "620f3f0744d4409b30a648f7",
+        content:
+          "I know a lot of people on team \"no artificial sweeteners\", but I have no issue with them at all and don't really miss the real stuff anymore. I use monkfruit drops in my tea, Mio in my water, and erythritol for a lot of my baking. Erythritol is a great one because it's mostly just excreted through urine unlike other artificial sweeteners that are fermented in the gut.",
+        user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
+        createdAt: "2022-02-18T06:39:03.380Z",
+        __v: 0,
+      },
+    ],
+    createdAt: "2022-02-17T16:52:03.601Z",
+    circle: { _id: "620e4ae4dc557df876cc584c", name: "Nutrition" },
+    __v: 0,
   };
 
-  const timeOptions = {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
-
-  if (date.getDate() === today.getDate()) {
-    return `Today, ${date.toLocaleTimeString(undefined, timeOptions)}`;
-  } else if (date.getDate() === yesterday.getDate()) {
-    return `Yesterday, ${date.toLocaleTimeString(undefined, timeOptions)}`;
-  } else {
-    return `${date.toLocaleDateString(
-      undefined,
-      dateOptions
-    )}, ${date.toLocaleTimeString(undefined, timeOptions)}`;
-  }
-}
-
-function Post(props) {
-  const author = (
-    <div className="author-card">
-      <img
-        className="author-img"
-        src={props.user?.image ? props.user.image : "profile.jpg"}
-        alt=""
-      />
-      <div className="author-details ">
-        <p className="author-name type-body-xs">{props.user.name}</p>
-        <p className="author-time type-body-xs color-secondary-grey">
-          {getTimeString(props.createdAt)}
-        </p>
-        <div />
-      </div>
-    </div>
-  );
-
-  const responses = (
-    <div className="responses-container">
-      <CommentIcon fontSize="small" className="responses-icon" />
-      <p className="type-body color-secondary-grey">
-        <span className="type-body-bold color-secondary-grey">
-          {props.comments.length}
-        </span>{" "}
-        responses
-      </p>
-    </div>
-  );
-
-  const circle = (
-    <div className="circle-container">
-      <img
-        className="circle-img"
-        src={props.circle?.image ? props.circle.image : "nutrition-icon.svg"}
-        alt=""
-      />
-      <p className="circle-name type-body-bold-xl">{props.circle.name}</p>
-    </div>
-  );
-
-  const post = (
-    <div className="post">
-      {author}
-      <h2 className="post-title type-h2">{props.title}</h2>
-      <p className="post-description type-body">{props?.description}</p>
-      {responses}
-    </div>
-  );
-
+  const similarCirclesArray = [
+    "College admissions",
+    "Universal Pre-K",
+    "Tutors",
+    "SAT/ACT Prep",
+  ];
   return (
-    <Card>
-      <CardContent>
-        {props?.showCircle && circle}
-        {post}
-      </CardContent>
-    </Card>
+    <>
+      <Header dashboard={"true"} />
+      <div className="your-circle-header-container">
+        <div className="your-circle-name-container">
+          <img
+            src="education-icon.svg"
+            alt="education icon"
+            className="education-icon"
+          />
+          <div className="circle-name-title-container">
+            <div className="circle-name-title-header">Education</div>
+            <div className="circle-member-info-container">
+              <div className="circle-member-info">
+                <PeopleOutlineIcon />
+                <span className="circle-member-info-text">135 members </span>
+              </div>
+              <div className="circle-member-info">
+                <RecordVoiceOverIcon />
+                <span className="circle-member-info-text">20 active now </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="leave-circle-button">
+          <CircleButton buttonText="Leave circle"></CircleButton>
+        </div>
+      </div>
+      <div className="dashboard-container">
+        <div className="dasboard-space-container"></div>
+        <div className="circle-left-section">
+        <a className="post-back-button type-link-xl" href="/circle"><ArrowBack className="arrow-back"/> Back to main {post.circle.name}</a>
+          <Post {...post} key={post._id} isPost={true} />
+          <div className="dashboard-heading-container">
+            <div className="dashboard-heading circles-conversation-heading">
+              <div>
+                <CircleButton buttonText="Post a reply"></CircleButton>
+              </div>
+            </div>
+            <div className="circle-sort-container">
+              <span className="sort-by-text">Sort by</span>
+              <Select
+                className="circle-sort-select"
+                value="Popular"
+                // onChange={handleChange}
+              >
+                <MenuItem value={"Popular"}>Popular</MenuItem>
+                <MenuItem value={"Latest"}>Latest</MenuItem>
+              </Select>
+            </div>
+          </div>
+          <div className="post-container">
+            {post.comments.map((res) => {
+              return <Post {...res} key={res._id} isComment={true} />;
+            })}
+          </div>
+        </div>
+        <div className="circle-right-section">
+          <Card className="your-circles">
+            <CardContent>
+              <div className="your-circles-heading">
+                <div className="dashboard-heading">Similar Circles</div>
+              </div>
+              {similarCirclesArray.map((name) => (
+                <div className="circle-name-container">
+                  <img src="not-joined-circle.svg" alt={name} />
+                  <div className="circle-name-title">{name}</div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+        <div className="dasboard-space-container"></div>
+      </div>
+    </>
   );
 }
 
-export default Post;
+export default Discussion;

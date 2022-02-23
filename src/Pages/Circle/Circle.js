@@ -104,7 +104,7 @@ function Circle() {
           </div>
           <div className="post-container">
             {circle.posts.map((res) => {
-              return <Post {...res} key={res._id} />;
+              return <Post {...res} key={res._id} isPost={true} />;
             })}
           </div>
         </div>

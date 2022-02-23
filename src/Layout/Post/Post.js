@@ -43,9 +43,9 @@ function Post(props) {
         alt=""
       />
       <div className="author-details ">
-        <p className="author-name type-body-xs">{props.user.name}</p>
+        <p className="author-name type-body-xs">{props?.user.name}</p>
         <p className="author-time type-body-xs color-secondary-grey">
-          {getTimeString(props.createdAt)}
+          {getTimeString(props?.createdAt)}
         </p>
         <div />
       </div>
@@ -57,7 +57,7 @@ function Post(props) {
       <CommentIcon fontSize="small" className="responses-icon" />
       <p className="type-body color-secondary-grey">
         <span className="type-body-bold color-secondary-grey">
-          {props.comments.length}
+          {props?.comments?.length}
         </span>{" "}
         responses
       </p>
@@ -68,27 +68,42 @@ function Post(props) {
     <div className="circle-container">
       <img
         className="circle-img"
-        src={props.circle?.image ? props.circle.image : "nutrition-icon.svg"}
+        src={props?.circle?.image ? props.circle.image : "nutrition-icon.svg"}
         alt=""
       />
-      <p className="circle-name type-body-bold-xl">{props.circle.name}</p>
+      <p className="circle-name type-body-bold-xl">{props?.circle?.name}</p>
     </div>
   );
 
   const post = (
     <div className="post">
       {author}
-      <h2 className="post-title type-h2">{props.title}</h2>
+      <h2 className="post-title type-h2">{props?.title}</h2>
       <p className="post-description type-body">{props?.description}</p>
       {responses}
+    </div>
+  );
+
+  const comment = (
+    <div className="post">
+      {author}
+      <p className="post-description type-body">{props?.content}</p>
+    </div>
+  );
+
+  const postWithCircle = (
+    <div>
+      {circle}
+      {post}
     </div>
   );
 
   return (
     <Card>
       <CardContent>
-        {props?.showCircle && circle}
-        {post}
+        {props?.isPostWithCircle && postWithCircle}
+        {props?.isPost && post}
+        {props?.isComment && comment}
       </CardContent>
     </Card>
   );
