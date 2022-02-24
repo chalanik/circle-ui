@@ -6,7 +6,7 @@ import { FormGroup } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import CircleButton from '../../Layout/Button/CircleButton';
 import './Topic.css';
-import circleMock from './circle-mock';
+import circleMock from '../../Mocks/circle-mock';
 
 function Topics() {
 

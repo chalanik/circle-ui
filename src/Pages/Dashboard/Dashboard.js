@@ -8,9 +8,16 @@ import MenuItem from "@mui/material/MenuItem";
 import Post from "../../Layout/Post/Post";
 import YourCircles from "../../Layout/YourCircles/YourCircles";
 import { useNavigate } from "react-router-dom";
+import userMock from "../../Mocks/user-mock";
 
 function Dashboard() {
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  let userInfo = localStorage.getItem("userInfo");
+  if(userInfo == null) {
+    userInfo = userMock;
+  } else {
+    userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  }
+
   const posts = userInfo.posts;
   const navigate = useNavigate();
 

@@ -12,9 +12,16 @@ import Post from "../../Layout/Post/Post";
 import PostDialog from "../../Layout/PostDialog/PostDialog";
 import "../../styles.css";
 import { useParams } from "react-router-dom";
+import userMock from "../../Mocks/user-mock";
 
 function Circle(props) {
-  const user = JSON.parse(localStorage.getItem("userInfo"));
+  let user = localStorage.getItem("userInfo");
+  if(user == null) {
+    user = userMock;
+  } else {
+    user = JSON.parse(localStorage.getItem("userInfo"));
+  }
+
   let { id } = useParams();
   let cirlceData = user.circles.find((circle) => circle._id === id);
   let posts = user.posts.filter((post) => cirlceData.posts.includes(post._id));
