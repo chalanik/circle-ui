@@ -14,13 +14,13 @@ import { ArrowBack } from "@mui/icons-material";
 import ReplyDialog from "../../Layout/ReplyDialog/ReplyDialog";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { CircularProgress, Box } from "@mui/material";
+import { useEffect } from "react";
 
 function Discussion(props) {
   const user = JSON.parse(localStorage.getItem("userInfo"));
   let { id } = useParams();
-  const [post, addComment] = React.useState(
-    user.posts.find((post) => post._id === id)
-  );
+  const [post, setPost] = React.useState();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = (value) => {
@@ -31,18 +31,24 @@ function Discussion(props) {
     setOpen(false);
   };
 
-  const handleComment = (comment) => {
-    fetch(
-      `https://express-nikhil.azurewebsites.net/api/v1/post/${post._id}/comment`,
-      {
-        method: "POST",
-        body: JSON.stringify({ ...comment, user: user._id, post: post._id }),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    comment.createdAt = new Date();
+  useEffect(() => {
+   !post && fetch(`https://express-nikhil.azurewebsites.net/api/v1/post/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPost(data);
+      });
+  });
+
+  const handleComment = async (comment) => {
+    console.log(comment);
+    const res = await fetch(`https://express-nikhil.azurewebsites.net/api/v1/post/${id}/comment`, {
+      method: "POST",
+      body: JSON.stringify({ ...comment, user: user._id, post: post._id }),
+      headers: { "Content-Type": "application/json" },
+    });
+    comment = await res.json();
     comment.user = { _id: user._id, name: user.name };
-    addComment({ ...post, comments: [...post.comments, comment] });
+    setPost({ ...post, comments: [...post.comments, comment] });
   };
 
   const similarCirclesArray = [
@@ -51,6 +57,19 @@ function Discussion(props) {
     "Tutors",
     "SAT/ACT Prep",
   ];
+  if (!post)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   return (
     <>
       <Header dashboard={"true"} />

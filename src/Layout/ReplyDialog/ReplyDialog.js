@@ -13,22 +13,19 @@ import "../../styles.css";
 export default function ReplyDialog(props) {
   const { onClose, open, onComment } = props;
 
+  const textRef = React.useRef("");
+  const switchRef = React.useRef("");
+
   let comment = { content: "", anonymous: false };
 
   const handleClose = () => {
     onClose();
   };
 
-  const handleChange = (e) => {
-    comment = { ...comment, content: e.target.value };
-  };
-
-  const handleSwitchChange = (e) => {
-    comment = { ...comment, anonymous: e.target.value };
-  };
-
   const handleComment = () => {
-    onComment(comment);
+    comment.content = textRef.current.value;
+    comment.anonymous = switchRef.current.value === "on";
+    comment.content && onComment(comment);
     onClose();
   };
 
@@ -57,13 +54,12 @@ export default function ReplyDialog(props) {
             fullWidth
             rows={6}
             placeholder="This is where you can reply to the main topic"
-            onChange={handleChange}
+            inputRef={textRef}
           />
         </DialogContent>
         <div className="reply-dialog-actions">
           <span>
-            <Switch onChange={handleSwitchChange} />{" "}
-            <span>Post anonymously</span>
+            <Switch inputRef={switchRef} /> <span>Post anonymously</span>
           </span>
           <CircleButton
             onClick={handleComment}

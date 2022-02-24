@@ -36,8 +36,8 @@ function Circle(props) {
     setOpen(false);
   };
 
-  const handlePost = (post) => {
-    fetch(
+  const handlePost =async (post) => {
+   const res = await fetch(
       `https://express-nikhil.azurewebsites.net/api/v1/circle/${circle._id}/post`,
       {
         method: "POST",
@@ -45,8 +45,9 @@ function Circle(props) {
         headers: { "Content-Type": "application/json" },
       }
     );
+    post = await res.json();
     post.user = { _id: user._id, name: user.name };
-    post.createdAt = new Date();
+    post.circle = { _id: circle._id, name: circle.name };
     addPost({ ...circle, posts: [...circle.posts, post] });
   };
 
