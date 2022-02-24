@@ -8,12 +8,27 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Switch from "@mui/material/Switch";
-import '../../styles.css';
+import "../../styles.css";
 
 export default function ReplyDialog(props) {
-  const { onClose, open } = props;
+  const { onClose, open, onComment } = props;
+
+  let comment = { content: "", anonymous: false };
 
   const handleClose = () => {
+    onClose();
+  };
+
+  const handleChange = (e) => {
+    comment = { ...comment, content: e.target.value };
+  };
+
+  const handleSwitchChange = (e) => {
+    comment = { ...comment, anonymous: e.target.value };
+  };
+
+  const handleComment = () => {
+    onComment(comment);
     onClose();
   };
 
@@ -42,14 +57,16 @@ export default function ReplyDialog(props) {
             fullWidth
             rows={6}
             placeholder="This is where you can reply to the main topic"
+            onChange={handleChange}
           />
         </DialogContent>
         <div className="reply-dialog-actions">
           <span>
-            <Switch /> <span>Post anonymously</span>
+            <Switch onChange={handleSwitchChange} />{" "}
+            <span>Post anonymously</span>
           </span>
           <CircleButton
-            onClick={handleClose}
+            onClick={handleComment}
             buttontext="Post reply"
           ></CircleButton>
         </div>

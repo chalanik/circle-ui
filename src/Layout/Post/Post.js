@@ -40,7 +40,7 @@ function Post(props) {
   const { post, isComment, isPost, isPostWithCircle } = props;
   const navigate = new useNavigate();
   const handleClick = () => {
-    navigate(`/post/`, { state: post });
+    navigate(`/post/${post._id}`);
   };
 
   const author = (

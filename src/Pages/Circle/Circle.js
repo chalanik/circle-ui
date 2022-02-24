@@ -13,42 +13,6 @@ import PostDialog from "../../Layout/PostDialog/PostDialog";
 import "../../styles.css";
 import { useParams } from "react-router-dom";
 
-let mockCircle = {
-  _id: "620e4ae4dc557df876cc584c",
-  name: "Nutrition",
-  users: [
-    { _id: "620e4979dc557df876cc5842", name: "Nikhil Chalamalla" },
-    { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
-    { _id: "620e4a21dc557df876cc5848", name: "Neha Sinha" },
-  ],
-  posts: [
-    {
-      _id: "620e7d3366d8d74efc3b2305",
-      description:
-        "What worked for me was to remove an item until I didn't crave it anymore instead of going completely cold turkey.",
-      title: "Best strategies for kicking a sugar addiction?",
-      user: { _id: "620e4979dc557df876cc5842", name: "Nikhil Chalamalla" },
-      comments: ["620f3f0744d4409b30a648f7"],
-      createdAt: "2022-02-17T16:52:03.601Z",
-      circle: "620e4ae4dc557df876cc584c",
-      __v: 0,
-    },
-    {
-      _id: "620e866eb4f4e0d8878d3e35",
-      description:
-        "All else being equal, if I hypothetically just added a couple of tablespoons of olive oil to my day, is that actually healthier?",
-      title:
-        '"Olive Oil is healthy," alright, but clarification needed: is it intrinsically healthy or only when it replaces unhealthy fats?',
-      user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
-      comments: [],
-      createdAt: "2022-02-17T17:31:26.175Z",
-      circle: "620e4ae4dc557df876cc584c",
-      __v: 0,
-    },
-  ],
-  __v: 0,
-};
-
 function Circle(props) {
   const user = JSON.parse(localStorage.getItem("userInfo"));
   let { id } = useParams();
@@ -66,10 +30,16 @@ function Circle(props) {
   };
 
   const handlePost = (post) => {
-    console.log(post);
-    post.user = { name: "Neha Sinha" };
+    fetch(
+      `https://express-nikhil.azurewebsites.net/api/v1/circle/${circle._id}/post`,
+      {
+        method: "POST",
+        body: JSON.stringify({ ...post, user: user._id }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    post.user = { _id: user._id, name: user.name };
     post.createdAt = new Date();
-    console.log(post);
     addPost({ ...circle, posts: [...circle.posts, post] });
   };
 

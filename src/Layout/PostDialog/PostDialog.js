@@ -20,6 +20,8 @@ export default function PostDialog(props) {
   };
 
   const handlePost = () => {
+    // fetch call on /api/v1/post/ post call
+
     onPost(post);
     onClose();
   };
@@ -30,6 +32,10 @@ export default function PostDialog(props) {
 
   const handleDescChange = (e) => {
     post = { ...post, description: e.target.value };
+  };
+
+  const handleSwitchChange = (e) => {
+    post = { ...post, anonymous: e.target.value };
   };
 
   return (
@@ -73,7 +79,8 @@ export default function PostDialog(props) {
         </DialogContent>
         <div className="reply-dialog-actions">
           <span>
-            <Switch /> <span>Post anonymously</span>
+            <Switch onChange={handleSwitchChange} />{" "}
+            <span>Post anonymously</span>
           </span>
           <CircleButton
             onClick={handlePost}

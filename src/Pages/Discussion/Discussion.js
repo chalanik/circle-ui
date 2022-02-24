@@ -12,13 +12,15 @@ import "./Discussion.css";
 import "../../styles.css";
 import { ArrowBack } from "@mui/icons-material";
 import ReplyDialog from "../../Layout/ReplyDialog/ReplyDialog";
-import { useLocation } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Discussion(props) {
-  const { state } = useLocation();
-  let post = state;
-  console.log(post);
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+  let { id } = useParams();
+  const [post, addComment] = React.useState(
+    user.posts.find((post) => post._id === id)
+  );
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = (value) => {
@@ -27,6 +29,20 @@ function Discussion(props) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleComment = (comment) => {
+    fetch(
+      `https://express-nikhil.azurewebsites.net/api/v1/post/${post._id}/comment`,
+      {
+        method: "POST",
+        body: JSON.stringify({ ...comment, user: user._id, post: post._id }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    comment.createdAt = new Date();
+    comment.user = { _id: user._id, name: user.name };
+    addComment({ ...post, comments: [...post.comments, comment] });
   };
 
   const similarCirclesArray = [
@@ -66,7 +82,10 @@ function Discussion(props) {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="circle-left-section">
-          <Link className="post-back-button type-link-xl" to={`/circle/${post.circle._id}`}>
+          <Link
+            className="post-back-button type-link-xl"
+            to={`/circle/${post.circle._id}`}
+          >
             <ArrowBack className="arrow-back" /> Back to main {post.circle.name}
           </Link>
           <Post post={post} key={post._id} isPost={true} />
@@ -93,7 +112,7 @@ function Discussion(props) {
           </div>
           <div className="post-container">
             {post.comments.map((res) => {
-              return <Post post={res} key={res._id} isComment={true} />;
+              return <Post post={res} key={res._id} isComment={true} had />;
             })}
           </div>
         </div>
@@ -114,7 +133,11 @@ function Discussion(props) {
         </div>
         <div className="dasboard-space-container"></div>
       </div>
-      <ReplyDialog open={open} onClose={handleClose}></ReplyDialog>
+      <ReplyDialog
+        open={open}
+        onClose={handleClose}
+        onComment={handleComment}
+      ></ReplyDialog>
     </>
   );
 }

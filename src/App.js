@@ -34,7 +34,7 @@ function App() {
             <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/circle/:id" element={<Circle />} />
-            <Route path="/post" element={<Discussion />} />
+            <Route path="/post/:id" element={<Discussion />} />
             <Route path="/test" element={<ReplyDialog />} />
         </Routes>
       </BrowserRouter>
