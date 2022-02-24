@@ -64,7 +64,7 @@ function Dependents() {
                     </div>
                     <div className="continue-button-container" >
                         <Link className="get-started-link" to="/pick-topic">
-                            <CircleButton buttonText="Continue"></CircleButton>
+                            <CircleButton buttontext="Continue"></CircleButton>
                         </Link>
                     </div>
                 </div>
