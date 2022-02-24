@@ -28,7 +28,6 @@ function Dashboard() {
 
   return (
     <>
-      <Header dashboard={"true"} />
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="dashboard-left-section">

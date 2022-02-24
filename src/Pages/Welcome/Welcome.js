@@ -35,7 +35,7 @@ function Welcome() {
 
     function getStartedClick() {
         if(isUserRegistered) {
-            navigate("/dashboard");
+            navigate("/dashboard-container");
         } else {
             navigate("/user-info");
         }

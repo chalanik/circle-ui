@@ -1,0 +1,21 @@
+.benefits-wrapper-container {
+    display: flex;
+    justify-content: center;
+    background-color: #F5F5F5;
+}
+
+.benefits-container {
+    width: 80%;
+    background-color: white;
+    margin: 30px;
+    padding: 20px;
+}
+
+.benefits-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #333333;
+    padding: 0 0 20px 0;
+}
