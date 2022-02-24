@@ -26,6 +26,7 @@
     display: flex;
     margin: 20px 0;
     align-items: center;
+    word-break: break-word;
 }
 
 .circle-name-title {
