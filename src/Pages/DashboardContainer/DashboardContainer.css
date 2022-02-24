@@ -5,3 +5,13 @@
 .tab-container {
     margin-left: 11%;
 }
+
+.MuiTabs-root button {
+    text-transform: none;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676;
+}

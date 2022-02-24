@@ -30,7 +30,7 @@
     top: 40px;
     left: 30px;
     width: 42%;
-    height: 70%;
+    height: 75%;
     background: rgba(0, 0, 0, 0.85);
     color: white;
     opacity: 0.8;
@@ -106,10 +106,18 @@
     margin: 2% 10% 2% 15%;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+    .welcome-image-div {
+        width: 75%
+    }
+}
+
 @media (max-width: 767px) {
     .welcome-image-div { 
-        width:70%;
-        height: 75%;
+        width:90%;
+        height: 85%;
+        left: 0;
+        top: 10px;
     }
 
     .about-container {
@@ -119,5 +127,14 @@
     .about-container-items {
         width: 100%;
         margin: 5% 0;
+    }
+
+    .welcome-text {
+        padding-top: 0;
+        font-size: 30px;
+    }
+
+    .welcome-image {
+        height: 420px;
     }
 }

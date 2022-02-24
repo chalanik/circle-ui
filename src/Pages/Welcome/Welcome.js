@@ -51,7 +51,10 @@ function Welcome() {
                 <div className="welcome-image-div">
                     <div className="welcome-text">Welcome to Circle</div>
                     <div className="welcome-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.
+                        Circle is an exclusive employee only social networking platform where users can seek advice and develop
+                        deeper social connections with their colleagues by sharing tips and experiences on life such as parenting,
+                        care giving and so much more. It is a place where you can gain insights and knowledge on navigating life
+                        from trustworthy sources, your own colleagues.
                     </div>
                     <div>
                         <CircleButton buttontext="Get started" onClick={getStartedClick}></CircleButton>

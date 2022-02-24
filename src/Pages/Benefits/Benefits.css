@@ -26,5 +26,12 @@
 }
 
 .benefits-card-items {
-    /* margin: 10px; */
+    height: 341px;
+    width: 345px;
+}
+
+@media (max-width: 767px) {
+    .benefits-card-container {
+        flex-direction: column;
+    }
 }
