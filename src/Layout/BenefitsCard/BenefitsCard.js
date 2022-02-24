@@ -23,6 +23,7 @@ export default function BenefitsCard() {
         <div className="benefits-card-description">
             A total of 40 days of backup childcare are available to you.
         </div>
+        <div className="learn-more">Learn more</div>
       </CardContent>
     </Card>
   );
