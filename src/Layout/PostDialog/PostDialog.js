@@ -35,7 +35,7 @@ export default function PostDialog(props) {
   };
 
   const handleSwitchChange = (e) => {
-    post = { ...post, anonymous: e.target.value };
+    post = { ...post, anonymous: e.target.value === "on"};
   };
 
   return (
