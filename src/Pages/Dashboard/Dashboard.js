@@ -9,37 +9,9 @@ import Post from "../../Layout/Post/Post";
 import YourCircles from "../../Layout/YourCircles/YourCircles";
 import { useNavigate } from "react-router-dom";
 
-const posts = [
-  {
-    _id: "620e7d3366d8d74efc3b2305",
-    description:
-      "What worked for me was to remove an item until I didn't crave it anymore instead of going completely cold turkey.",
-    title: "Best strategies for kicking a sugar addiction?",
-    user: { _id: "620e4979dc557df876cc5842", name: "Nikhil Chalamalla" },
-    comments: ["620f3f0744d4409b30a648f7"],
-    createdAt: "2022-02-17T16:52:03.601Z",
-    circle: { _id: "620e4ae4dc557df876cc584c", name: "Nutrition" },
-    __v: 0,
-  },
-  {
-    _id: "620e866eb4f4e0d8878d3e35",
-    description:
-      "All else being equal, if I hypothetically just added a couple of tablespoons of olive oil to my day, is that actually healthier?",
-    title:
-      "Thinking about holding my son back from Kindergarten this year. Anyone else doing the same?",
-    user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
-    comments: [],
-    createdAt: "2022-02-23T05:24:52.716Z",
-    circle: { _id: "620e4ae4dc557df876cc584c", name: "Education" },
-    __v: 0,
-  },
-];
-
 function Dashboard() {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  const [posts, setPosts] = React.useState(
-    userInfo.posts
-  );
+  const posts = userInfo.posts;
   const navigate = useNavigate();
 
   const handlePostClick = (post) => {
@@ -53,9 +25,7 @@ function Dashboard() {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="dashboard-left-section">
-          <YourCircles
-            circles={userInfo.circles}
-          />
+          <YourCircles circles={userInfo.circles} />
 
           <Card className="your-circles">
             <CardContent>
