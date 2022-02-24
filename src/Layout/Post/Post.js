@@ -1,9 +1,11 @@
 import React from "react";
 import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import "../../styles.css";
 import CommentIcon from "@mui/icons-material/Comment";
 import "./Post.css";
+import { useNavigate } from "react-router-dom";
 
 //given Date timestamp, return the date in the form "Year-Month-Day, 12:00 PM"
 function getTimeString(timestamp) {
@@ -35,17 +37,23 @@ function getTimeString(timestamp) {
 }
 
 function Post(props) {
+  const { post, isComment, isPost, isPostWithCircle } = props;
+  const navigate = new useNavigate();
+  const handleClick = () => {
+    navigate(`/post/`, { state: post });
+  };
+
   const author = (
     <div className="author-card">
       <img
         className="author-img"
-        src={props.user?.image ? props.user.image : "profile.jpg"}
+        src={post.user?.image ? post.user.image : "profile.jpg"}
         alt=""
       />
       <div className="author-details ">
-        <p className="author-name type-body-xs">{props?.user.name}</p>
+        <p className="author-name type-body-xs">{post?.user.name}</p>
         <p className="author-time type-body-xs color-secondary-grey">
-          {getTimeString(props?.createdAt)}
+          {getTimeString(post?.createdAt)}
         </p>
         <div />
       </div>
@@ -57,7 +65,7 @@ function Post(props) {
       <CommentIcon fontSize="small" className="responses-icon" />
       <p className="type-body color-secondary-grey">
         <span className="type-body-bold color-secondary-grey">
-          {props?.comments?.length}
+          {post?.comments?.length}
         </span>{" "}
         responses
       </p>
@@ -68,18 +76,18 @@ function Post(props) {
     <div className="circle-container">
       <img
         className="circle-img"
-        src={props?.circle?.image ? props.circle.image : "nutrition-icon.svg"}
+        src={post?.circle?.image ? post.circle.image : "nutrition-icon.svg"}
         alt=""
       />
-      <p className="circle-name type-body-bold-xl">{props?.circle?.name}</p>
+      <p className="circle-name type-body-bold-xl">{post?.circle?.name}</p>
     </div>
   );
 
-  const post = (
+  const postCard = (
     <div className="post">
       {author}
-      <h2 className="post-title type-h2">{props?.title}</h2>
-      <p className="post-description type-body">{props?.description}</p>
+      <h2 className="post-title type-h2">{post?.title}</h2>
+      <p className="post-description type-body">{post?.description}</p>
       {responses}
     </div>
   );
@@ -87,24 +95,26 @@ function Post(props) {
   const comment = (
     <div className="post">
       {author}
-      <p className="post-description type-body">{props?.content}</p>
+      <p className="post-description type-body">{post?.content}</p>
     </div>
   );
 
   const postWithCircle = (
     <div>
       {circle}
-      {post}
+      {postCard}
     </div>
   );
 
   return (
     <Card>
-      <CardContent>
-        {props?.isPostWithCircle && postWithCircle}
-        {props?.isPost && post}
-        {props?.isComment && comment}
-      </CardContent>
+      <CardActionArea onClick={handleClick}>
+        <CardContent>
+          {isPostWithCircle && postWithCircle}
+          {isPost && postCard}
+          {isComment && comment}
+        </CardContent>{" "}
+      </CardActionArea>
     </Card>
   );
 }

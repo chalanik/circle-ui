@@ -11,6 +11,7 @@ import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
 import Post from "../../Layout/Post/Post";
 import PostDialog from "../../Layout/PostDialog/PostDialog";
 import "../../styles.css";
+import { useParams } from "react-router-dom";
 
 let mockCircle = {
   _id: "620e4ae4dc557df876cc584c",
@@ -48,10 +49,13 @@ let mockCircle = {
   __v: 0,
 };
 
-
 function Circle(props) {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+  let { id } = useParams();
+  let cirlceData = user.circles.find((circle) => circle._id === id);
+  let posts = user.posts.filter((post) => cirlceData.posts.includes(post._id));
   const [open, setOpen] = React.useState(false);
-  const [circle, addPost] = React.useState(mockCircle);
+  const [circle, addPost] = React.useState({ ...cirlceData, posts: posts });
 
   const handleClickOpen = (value) => {
     setOpen(true);
@@ -63,12 +67,11 @@ function Circle(props) {
 
   const handlePost = (post) => {
     console.log(post);
-    post.user ={name: "Neha Sinha"}
-    post.createdAt = new Date()
+    post.user = { name: "Neha Sinha" };
+    post.createdAt = new Date();
     console.log(post);
-    addPost({...circle, posts:[...circle.posts, post]})
+    addPost({ ...circle, posts: [...circle.posts, post] });
   };
-
 
   const similarCirclesArray = [
     "College admissions",
@@ -130,7 +133,7 @@ function Circle(props) {
           </div>
           <div className="post-container">
             {circle.posts.map((res) => {
-              return <Post {...res} key={res._id} isPost={true} />;
+              return <Post post={res} key={res._id} isPost={true} />;
             })}
           </div>
         </div>

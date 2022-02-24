@@ -4,7 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import { Link } from 'react-router-dom';
 import './YourCircles.css';
 
-function YourCircles({circlesArray}) {
+function YourCircles(props) {
+    const { circles } = props;
 
     function getIconPath(topic) {
         switch(topic) {
@@ -26,11 +27,11 @@ function YourCircles({circlesArray}) {
                     <div className="dashboard-heading">Your Circles</div>
                     <div className="circle-manage-title">Manage</div>
                 </div>
-                {circlesArray.map(name => (  
+                {circles.map(circle => (  
                     <div className="circle-name-container">
-                    <img src={getIconPath(name)} alt={name}/>
-                    <Link className="circle-name-link" to="/circle">
-                        <div className="circle-name-title">{name}</div>
+                    <img src={getIconPath(circle.name)} alt={circle.name}/>
+                    <Link className="circle-name-link" to={`/circle/${circle._id}`}>
+                        <div className="circle-name-title">{circle.name}</div>
                     </Link>
                 </div> 
                 ))}  

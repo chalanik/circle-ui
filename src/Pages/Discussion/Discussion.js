@@ -12,8 +12,13 @@ import "./Discussion.css";
 import "../../styles.css";
 import { ArrowBack } from "@mui/icons-material";
 import ReplyDialog from "../../Layout/ReplyDialog/ReplyDialog";
+import { useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Discussion(props) {
+  const { state } = useLocation();
+  let post = state;
+  console.log(post);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = (value) => {
@@ -22,26 +27,6 @@ function Discussion(props) {
 
   const handleClose = () => {
     setOpen(false);
-  };
-  const post = {
-    _id: "620e7d3366d8d74efc3b2305",
-    description:
-      "What worked for me was to remove an item until I didn't crave it anymore instead of going completely cold turkey.",
-    title: "Best strategies for kicking a sugar addiction?",
-    user: { _id: "620e4979dc557df876cc5842", name: "Nikhil Chalamalla" },
-    comments: [
-      {
-        _id: "620f3f0744d4409b30a648f7",
-        content:
-          "I know a lot of people on team \"no artificial sweeteners\", but I have no issue with them at all and don't really miss the real stuff anymore. I use monkfruit drops in my tea, Mio in my water, and erythritol for a lot of my baking. Erythritol is a great one because it's mostly just excreted through urine unlike other artificial sweeteners that are fermented in the gut.",
-        user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
-        createdAt: "2022-02-18T06:39:03.380Z",
-        __v: 0,
-      },
-    ],
-    createdAt: "2022-02-17T16:52:03.601Z",
-    circle: { _id: "620e4ae4dc557df876cc584c", name: "Nutrition" },
-    __v: 0,
   };
 
   const similarCirclesArray = [
@@ -81,10 +66,10 @@ function Discussion(props) {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="circle-left-section">
-          <a className="post-back-button type-link-xl" href="/circle">
+          <Link className="post-back-button type-link-xl" to={`/circle/${post.circle._id}`}>
             <ArrowBack className="arrow-back" /> Back to main {post.circle.name}
-          </a>
-          <Post {...post} key={post._id} isPost={true} />
+          </Link>
+          <Post post={post} key={post._id} isPost={true} />
           <div className="dashboard-heading-container">
             <div className="dashboard-heading circles-conversation-heading">
               <div>
@@ -108,7 +93,7 @@ function Discussion(props) {
           </div>
           <div className="post-container">
             {post.comments.map((res) => {
-              return <Post {...res} key={res._id} isComment={true} />;
+              return <Post post={res} key={res._id} isComment={true} />;
             })}
           </div>
         </div>

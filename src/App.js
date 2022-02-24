@@ -33,7 +33,7 @@ function App() {
             <Route path="/pick-topic" element={<Topics />} />
             <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/circle" element={<Circle />} />
+            <Route path="/circle/:id" element={<Circle />} />
             <Route path="/post" element={<Discussion />} />
             <Route path="/test" element={<ReplyDialog />} />
         </Routes>
