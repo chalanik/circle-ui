@@ -75,7 +75,7 @@ function Discussion(props) {
           </div>
         </div>
         <div className="leave-circle-button">
-          <CircleButton buttonText="Leave circle"></CircleButton>
+          <CircleButton buttontext="Leave circle"></CircleButton>
         </div>
       </div>
       <div className="dashboard-container">
@@ -89,7 +89,7 @@ function Discussion(props) {
             <div className="dashboard-heading circles-conversation-heading">
               <div>
                 <CircleButton
-                  buttonText="Post a reply"
+                  buttontext="Post a reply"
                   onClick={handleClickOpen}
                 ></CircleButton>
               </div>

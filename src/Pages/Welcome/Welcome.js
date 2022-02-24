@@ -27,10 +27,19 @@ function Welcome() {
             localStorage.setItem('userInfo', JSON.stringify(data));
         }
     };
+
+    const fetchCircles = async () => {
+        const circlesResponse = await fetch(
+            `https://express-nikhil.azurewebsites.net/api/v1/circles`
+        );
+        const circles = await circlesResponse.json();
+        localStorage.setItem('circles', JSON.stringify(circles));
+    };
     
     useEffect( () => {
         localStorage.clear();
         fetchUsers();
+        fetchCircles();
     });
 
     function getStartedClick() {
@@ -54,7 +63,7 @@ function Welcome() {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.
                     </div>
                     <div>
-                        <CircleButton buttonText="Get started" onClick={getStartedClick}></CircleButton>
+                        <CircleButton buttontext="Get started" onClick={getStartedClick}></CircleButton>
                      </div>
                 </div>
             </div>
@@ -79,7 +88,7 @@ function Welcome() {
             </div>
 
             <div className="welcome-button-container">
-                <CircleButton buttonText="Get started" onClick={getStartedClick}></CircleButton>
+                <CircleButton buttontext="Get started" onClick={getStartedClick}></CircleButton>
             </div>
         </div>
         </div>

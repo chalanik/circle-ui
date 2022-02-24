@@ -101,7 +101,7 @@ function Circle(props) {
           </div>
         </div>
         <div className="leave-circle-button">
-          <CircleButton buttonText="Leave circle"></CircleButton>
+          <CircleButton buttontext="Leave circle"></CircleButton>
         </div>
       </div>
       <div className="dashboard-container">
@@ -111,7 +111,7 @@ function Circle(props) {
             <div className="dashboard-heading circles-conversation-heading">
               <div>
                 <CircleButton
-                  buttonText="Start a new topic"
+                  buttontext="Start a new topic"
                   onClick={handleClickOpen}
                 ></CircleButton>
               </div>

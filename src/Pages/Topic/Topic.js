@@ -6,21 +6,30 @@ import { FormGroup } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import CircleButton from '../../Layout/Button/CircleButton';
 import './Topic.css';
+import circleMock from './circle-mock';
 
 function Topics() {
 
-    const [circles, addCircles] = useState([]);
+    const [circleIdList, addCircleIds] = useState([]);
     let user = {};
+
+    let circlesResponse = localStorage.getItem('circles');
+    if(circlesResponse == null) {
+        circlesResponse = circleMock;
+    } else {
+        circlesResponse = JSON.parse(circlesResponse);
+    }
+
+    const [circleList] = useState([...circlesResponse]);
 
     function continueClickHandler() {
         user = JSON.parse(localStorage.getItem('userFormData'));
-        user = { ...user, 'circles': circles };
+        user = { ...user, 'circles': circleIdList };
         localStorage.setItem('userFormData', JSON.stringify(user));
-        let { zip, circles: userCircles } = user;
         fetch(
             `https://express-nikhil.azurewebsites.net/api/v1/user/${user._id}`, {
                 method: "POST",
-                body: JSON.stringify({ zip, userCircles }),
+                body: JSON.stringify({ zip: user.zip, circles: circleIdList }),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
@@ -30,13 +39,13 @@ function Topics() {
         .then(json => console.log(json));
     }
 
-    function manageCircles(event, circle) {
+    function manageCircles(event, circleId) {
         let isSelected = event.target.checked;
         if(isSelected) {
-            addCircles([...circles, circle]);
+            addCircleIds([...circleIdList, circleId]);
         } else {
-            let filteredArray = circles.filter(element => element !== circle );
-            addCircles([...filteredArray]);
+            let filteredIdArray = circleIdList.filter(element => element !== circleId );
+            addCircleIds([...filteredIdArray]);
         }
     }
 
@@ -48,36 +57,14 @@ function Topics() {
                 <h2 className="topic-selection-title type-h1">What types of topics interest you ?</h2>
                 <h3 className="topic-selection-desc">We call these topics "Circles" and we'll add you to the ones you're interested in. You can always add more later!</h3>
                 <FormGroup className="topic-selection-pool">
-                    <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox"
-                            control={<Checkbox  onChange={(event) => manageCircles(event, "Education")} />}
-                            label="Education" 
-                        />
-                    </div>
-                    <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox"
-                            control={<Checkbox onChange={(event) => manageCircles(event, "Finance/Budgeting")}/>}
-                            label="Finance/Budgeting"
-                        />
-                    </div>
-                    <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox"
-                            control={<Checkbox onChange={(event) => manageCircles(event, "Nutrition")}/>}
-                            label="Nutrition"
-                        />
-                    </div>
-                    <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox"
-                            control={<Checkbox onChange={(event) => manageCircles(event, "Childcare")}/>}
-                            label="Childcare"
-                        />
-                    </div>
-                    <div className="topic-selection-checkbox-container">
-                        <FormControlLabel className="topic-selection-checkbox"
-                            control={<Checkbox onChange={(event) => manageCircles(event, "Activities")}/>}
-                            label="Activities"
-                        />
-                    </div>
+                    { circleList.map((c) => (
+                         <div className="topic-selection-checkbox-container">
+                            <FormControlLabel className="topic-selection-checkbox"
+                                control={<Checkbox  onChange={(event) => manageCircles(event, c._id)} />}
+                                label={c.name}
+                            />
+                        </div>
+                    ))}
                 </FormGroup>
                 <div className="navigation-container">
                     <div className="dependent-back-link">
@@ -85,7 +72,7 @@ function Topics() {
                     </div>
                     <div className="continue-button-container" onClick={continueClickHandler}>
                         <Link className="get-started-link" to="/dashboard">
-                            <CircleButton buttonText="Continue"></CircleButton>
+                            <CircleButton buttontext="Continue"></CircleButton>
                         </Link>
                     </div>
                 </div>

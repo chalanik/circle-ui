@@ -50,7 +50,7 @@ export default function ReplyDialog(props) {
           </span>
           <CircleButton
             onClick={handleClose}
-            buttonText="Post reply"
+            buttontext="Post reply"
           ></CircleButton>
         </div>
       </Dialog>

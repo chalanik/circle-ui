@@ -5,7 +5,7 @@ import './CircleButton.css';
 function CircleButton(props) {
     return (
         <Button {...props} className="circle-button" color="primary" variant="contained" disableElevation size="large">
-           {props.buttonText}
+           {props.buttontext}
         </Button>
     );
 }

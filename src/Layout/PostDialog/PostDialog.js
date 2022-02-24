@@ -77,7 +77,7 @@ export default function PostDialog(props) {
           </span>
           <CircleButton
             onClick={handlePost}
-            buttonText="Post topic"
+            buttontext="Post topic"
           ></CircleButton>
         </div>
       </Dialog>
