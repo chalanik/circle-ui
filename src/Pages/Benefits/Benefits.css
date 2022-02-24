@@ -1,0 +1,30 @@
+.benefits-wrapper-container {
+    display: flex;
+    justify-content: center;
+    background-color: #F5F5F5;
+}
+
+.benefits-container {
+    width: 75%;
+    background-color: white;
+    margin: 30px;
+    padding: 20px;
+}
+
+.benefits-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #333333;
+}
+
+.benefits-card-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.benefits-card-items {
+    /* margin: 10px; */
+}

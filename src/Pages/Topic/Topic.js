@@ -71,7 +71,7 @@ function Topics() {
                         <Link className="back-link" to="/dependents">Back</Link>
                     </div>
                     <div className="continue-button-container" onClick={continueClickHandler}>
-                        <Link className="get-started-link" to="/dashboard">
+                        <Link className="get-started-link" to="/dashboard-container">
                             <CircleButton buttontext="Continue"></CircleButton>
                         </Link>
                     </div>

@@ -10,6 +10,7 @@ import Topics from './Pages/Topic/Topic';
 import Launch from './Pages/Launch/Launch';
 import Discussion from './Pages/Discussion/Discussion';
 import ReplyDialog from './Layout/ReplyDialog/ReplyDialog';
+import DashboardContainer from './Pages/DashboardContainer/DashboardContainer';
 
 const theme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/pick-topic" element={<Topics />} />
             <Route path="/dependents" element={<Dependents />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard-container" element={<DashboardContainer />} />
             <Route path="/circle/:id" element={<Circle />} />
             <Route path="/post/:id" element={<Discussion />} />
             <Route path="/test" element={<ReplyDialog />} />

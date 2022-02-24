@@ -1,6 +1,5 @@
 import React from "react";
 import "./Dashboard.css";
-import Header from "../../Layout/Header/Header";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Select from "@mui/material/Select";
@@ -28,7 +27,6 @@ function Dashboard() {
 
   return (
     <>
-      <Header dashboard={"true"} />
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="dashboard-left-section">
