@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Post from "../../Layout/Post/Post";
 import YourCircles from "../../Layout/YourCircles/YourCircles";
+import { useNavigate } from "react-router-dom";
 
 const posts = [
   {
@@ -25,7 +26,7 @@ const posts = [
     description:
       "All else being equal, if I hypothetically just added a couple of tablespoons of olive oil to my day, is that actually healthier?",
     title:
-      'Thinking about holding my son back from Kindergarten this year. Anyone else doing the same?',
+      "Thinking about holding my son back from Kindergarten this year. Anyone else doing the same?",
     user: { _id: "620e49e5dc557df876cc5844", name: "Karthikeyan K" },
     comments: [],
     createdAt: "2022-02-23T05:24:52.716Z",
@@ -35,6 +36,17 @@ const posts = [
 ];
 
 function Dashboard() {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const [posts, setPosts] = React.useState(
+    userInfo.posts
+  );
+  const navigate = useNavigate();
+
+  const handlePostClick = (post) => {
+    console.log(post);
+    navigate(`/post/`, { state: post });
+  };
+
   return (
     <>
       <Header dashboard={"true"} />
@@ -42,14 +54,7 @@ function Dashboard() {
         <div className="dasboard-space-container"></div>
         <div className="dashboard-left-section">
           <YourCircles
-            circlesArray={[
-              "Education",
-              "Financial planning / budgeting",
-              "Nutrition",
-              "Childcare",
-              "Elderly Care",
-              "Activities",
-            ]}
+            circles={userInfo.circles}
           />
 
           <Card className="your-circles">
@@ -89,7 +94,13 @@ function Dashboard() {
           </div>
           <div className="dashboard-post-container">
             {posts.map((res) => {
-              return <Post {...res} isPostWithCircle={true} />;
+              return (
+                <Post
+                  post={res}
+                  isPostWithCircle={true}
+                  onPostClick={handlePostClick}
+                />
+              );
             })}
           </div>
         </div>
