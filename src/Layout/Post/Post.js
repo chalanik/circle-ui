@@ -79,7 +79,7 @@ function Post(props) {
     <div className="circle-container">
       <img
         className="circle-img"
-        src={post?.circle?.image ? post.circle.image : "nutrition-icon.svg"}
+        src={getIconPath(post?.circle?.name)}
         alt=""
       />
       <p className="circle-name type-body-bold-xl">{post?.circle?.name}</p>
@@ -108,6 +108,25 @@ function Post(props) {
       {postCard}
     </div>
   );
+
+  function getIconPath(topic) {
+    switch (topic) {
+      case "Education":
+        return "education-icon.svg";
+      case "Nutrition":
+        return "nutrition-icon.svg";
+      case "Financial Planning":
+        return "finance-budgeting-icon.svg";
+      case "Childcare":
+        return "childcare-icon.svg";
+      case "Activities":
+          return "activities-icon.svg";
+      case "Elderly Care":
+          return "elderly-care-icon.svg";
+      default:
+        return "not-joined-circle.svg";
+    }
+  }
 
   return (
     <Card>
