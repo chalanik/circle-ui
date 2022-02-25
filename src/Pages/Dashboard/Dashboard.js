@@ -13,7 +13,7 @@ import { useEffect } from "react";
 
 function Dashboard() {
   let userInfo = localStorage.getItem("userInfo");
-  if(userInfo == null) {
+  if (userInfo == null) {
     userInfo = userMock;
   } else {
     userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -27,17 +27,21 @@ function Dashboard() {
     navigate(`/post/`, { state: post });
   };
 
-
   useEffect(() => {
-    !posts.length && fetch(`https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`)
-       .then((res) => res.json())
-       .then((data) => {
-         localStorage.setItem("userInfo", JSON.stringify(data));
-         setPost(data.posts);
-       });
-   });
+    const update = localStorage.getItem("update");
+    !posts.length ||
+      (update === "true" &&
+        fetch(
+          `https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("userInfo", JSON.stringify(data));
+            setPost(data.posts);
+            localStorage.setItem("update", "false");
+          }));
+  });
 
-  
   if (!posts)
     return (
       <Box

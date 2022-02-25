@@ -24,7 +24,7 @@ export default function ReplyDialog(props) {
 
   const handleComment = () => {
     comment.content = textRef.current.value;
-    comment.anonymous = switchRef.current.value === "on";
+    comment.anonymous = switchRef.current.checked;
     comment.content && onComment(comment);
     onClose();
   };
