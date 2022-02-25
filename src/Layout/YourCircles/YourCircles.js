@@ -15,6 +15,12 @@ function YourCircles(props) {
         return "nutrition-icon.svg";
       case "Financial Planning":
         return "finance-budgeting-icon.svg";
+      case "Childcare":
+        return "childcare-icon.svg";
+      case "Activities":
+          return "activities-icon.svg";
+      case "Elderly Care":
+          return "elderly-care-icon.svg";
       default:
         return "not-joined-circle.svg";
     }
