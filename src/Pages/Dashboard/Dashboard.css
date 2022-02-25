@@ -12,14 +12,12 @@
 
 .dashboard-left-section {
     width: 26%;
+    margin: 24px;
 }
 
 .dashboard-right-section {
     width: 54%;
-}
-
-.circles-conversation-heading {
-    padding: 50px 0 0 0;
+    margin: 24px 0;
 }
 
 .circle-trending-topic-header {
@@ -54,19 +52,27 @@
 .dashboard-heading-container {
     display: flex;
     justify-content: space-between;
-    height: 90px;
+    align-items: flex-end;
+    margin-bottom: 24px;
 }
 
 .circle-sort-container {
     display: flex;
     flex-direction: column;
     width: 25%;
-    padding-top: 25px;
+}
+
+.circle-sort-select{
+    height: 40px
 }
 
 .sort-by-text {
     font-size: 14px;
     padding: 5px;
+}
+
+.trending-topics{
+    margin-top: 16px;
 }
 
 @media (max-width: 767px) {

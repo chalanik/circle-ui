@@ -14,7 +14,10 @@ import "../../styles.css";
 import { useParams } from "react-router-dom";
 import userMock from "../../Mocks/user-mock";
 import { useEffect } from "react";
+import CTACard from "../../Layout/CTACard/CTACard";
 import { CircularProgress, Box } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function Circle(props) {
   let user = localStorage.getItem("userInfo");
@@ -112,18 +115,18 @@ function Circle(props) {
   ];
 
   if (!circle)
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        height: "100vh",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <CircularProgress />
-    </Box>
-  );
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   return (
     <>
       <Header dashboard={"true"} />
@@ -159,6 +162,9 @@ function Circle(props) {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="circle-left-section">
+          <Link className="dashboard-back-button type-link-xl" to={`/dashboard-container`}>
+            <ArrowBack className="arrow-back" /> Back to Dashboard
+          </Link>
           <div className="dashboard-heading-container">
             <div className="dashboard-heading circles-conversation-heading">
               <div>
@@ -200,6 +206,7 @@ function Circle(props) {
               ))}
             </CardContent>
           </Card>
+          <CTACard />
         </div>
         <div className="dasboard-space-container"></div>
       </div>

@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
-import userMock from '../../Mocks/user-mock';
+import userMock from "../../Mocks/user-mock";
 import { validatePost } from "../../Utility/Utils";
 
 function Discussion(props) {
@@ -45,14 +45,15 @@ function Discussion(props) {
   };
 
   useEffect(() => {
-   !post && fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setPost(data);
-      })
-      .catch(()=> {
-        setPost(user.posts[0]);
-      });
+    !post &&
+      fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setPost(data);
+        })
+        .catch(() => {
+          setPost(user.posts[0]);
+        });
   });
 
   const handleComment = async (comment) => {
@@ -64,18 +65,21 @@ function Discussion(props) {
     if (isInValidPost) {
       setErrorMessageOnPost(true);
     } else {
-      const res = await fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}/comment`, {
-        method: "POST",
-        body: JSON.stringify({ ...comment, user: user._id, post: post._id }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await fetch(
+        `https://circle-server.azurewebsites.net/api/v1/post/${id}/comment`,
+        {
+          method: "POST",
+          body: JSON.stringify({ ...comment, user: user._id, post: post._id }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       comment = await res.json();
       comment.user = { _id: user._id, name: user.name };
       setPost({ ...post, comments: [...post.comments, comment] });
       localStorage.setItem("update", true);
       handleClose();
-    };
-  }
+    }
+  };
 
   const similarCirclesArray = [
     "College admissions",
@@ -133,7 +137,9 @@ function Discussion(props) {
           >
             <ArrowBack className="arrow-back" /> Back to main {post.circle.name}
           </Link>
-          <Post post={post} key={post._id} isPost={true} />
+          <div className="circle-topic-container">
+            <Post post={post} key={post._id} isPost={true} />
+          </div>
           <div className="dashboard-heading-container">
             <div className="dashboard-heading circles-conversation-heading">
               <div>

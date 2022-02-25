@@ -4,10 +4,12 @@
 
 .circle-left-section {
     width: 54%;
+    margin: 24px 0;
 }
 
 .circle-right-section {
     width: 26%;
+    margin: 24px 16px;
 }
 
 .your-circle-header-container {
@@ -57,10 +59,14 @@
 }
 
 .post-container{
-    margin-top: 16px;
+    margin-top: 24px;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 16px;
+}
+
+.dashboard-back-button{
+    display : flex
 }
 
 @media (max-width: 767px) {

@@ -63,7 +63,7 @@ function Dashboard() {
         <div className="dashboard-left-section">
           <YourCircles circles={userInfo.circles} />
 
-          <Card className="your-circles">
+          <Card className="trending-topics">
             <CardContent>
               <div className="dashboard-heading circle-trending-topic-header">
                 Trending Topics
