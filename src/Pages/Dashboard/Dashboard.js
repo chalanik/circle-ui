@@ -29,8 +29,8 @@ function Dashboard() {
 
   useEffect(() => {
     const update = localStorage.getItem("update");
-    !posts.length ||
-      (update === "true" &&
+    (!posts.length ||
+      update === "true") &&
         fetch(
           `https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`
         )
@@ -39,7 +39,7 @@ function Dashboard() {
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPost(data.posts);
             localStorage.setItem("update", "false");
-          }));
+          });
   });
 
   if (!posts)

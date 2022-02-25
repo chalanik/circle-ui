@@ -59,7 +59,7 @@ export default function PostDialog(props) {
             label=""
             multiline
             fullWidth
-            rows={1}
+            rows={2}
             placeholder="Your topic’s title. This is the preview people will see "
             sx={{ paddingBottom: "16px" }}
             inputRef={titleRef}
