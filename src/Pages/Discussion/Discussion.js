@@ -16,9 +16,16 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
+import userMock from '../../Mocks/user-mock';
 
 function Discussion(props) {
-  const user = JSON.parse(localStorage.getItem("userInfo"));
+  let user = localStorage.getItem("userInfo");
+  if (user == null) {
+    user = userMock;
+  } else {
+    user = JSON.parse(localStorage.getItem("userInfo"));
+  }
+  // const user = JSON.parse(localStorage.getItem("userInfo"));
   let { id } = useParams();
   const [post, setPost] = React.useState();
   const [open, setOpen] = React.useState(false);
@@ -36,6 +43,9 @@ function Discussion(props) {
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
+      })
+      .catch(()=> {
+        setPost(user.posts[0]);
       });
   });
 
