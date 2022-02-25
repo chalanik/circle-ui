@@ -12,7 +12,18 @@ function Welcome() {
   const fetchUsers = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let userId = urlParams.get("id");
-    userId = userId ? userId : "nikhil";
+    userId = [
+      "nikhil",
+      "neha",
+      "rupinder",
+      "mona",
+      "deniz",
+      "lori",
+      "katie",
+      "karthik",
+    ].includes(userId)
+      ? userId
+      : "nikhil";
     let user = {};
 
     const response = await fetch(
