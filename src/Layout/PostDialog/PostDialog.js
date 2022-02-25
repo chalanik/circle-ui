@@ -8,8 +8,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Switch from "@mui/material/Switch";
-import Stack from '@mui/material/Stack';
-import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
 import "../../styles.css";
