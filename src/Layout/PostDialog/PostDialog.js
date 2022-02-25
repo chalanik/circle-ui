@@ -8,10 +8,16 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Switch from "@mui/material/Switch";
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
 import "../../styles.css";
 
 export default function PostDialog(props) {
-  const { onClose, open, onPost } = props;
+  const { onClose, open, showErrorMessage, onPost } = props;
+
+  console.log('Data : ',onClose,open,showErrorMessage,onPost);
 
   let post = { title: "", description: "" };
 
@@ -23,7 +29,6 @@ export default function PostDialog(props) {
     // fetch call on /api/v1/post/ post call
 
     onPost(post);
-    onClose();
   };
 
   const handleTitleChange = (e) => {
@@ -42,7 +47,7 @@ export default function PostDialog(props) {
     <div>
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle className="type-body-bold-xl">
-          Your topic
+          Your topic 
           <IconButton
             aria-label="close"
             onClick={handleClose}
@@ -87,6 +92,14 @@ export default function PostDialog(props) {
             buttontext="Post topic"
           ></CircleButton>
         </div>
+        {
+          showErrorMessage ? 
+          ( <div class="error-msg-container">
+              <Alert severity="error">Please post valid message!!</Alert>
+            </div>  
+          ) : null
+        }
+
       </Dialog>
     </div>
   );
