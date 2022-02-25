@@ -74,10 +74,9 @@ function Dashboard() {
               <div className="circle-name-title circle-topics">
                 Work life balance
               </div>
-              <div className="circle-name-title circle-topics">Topic</div>
-              <div className="circle-name-title circle-topics">Topic</div>
-              <div className="circle-name-title circle-topics">Topic</div>
-              <div className="circle-name-title circle-topics">Topic</div>
+              <div className="circle-name-title circle-topics">College admissions 2022</div>
+              <div className="circle-name-title circle-topics">Teaching child about masking</div>
+              <div className="circle-name-title circle-topics">Covid protocols in NYC public schools</div>
             </CardContent>
           </Card>
         </div>
