@@ -30,11 +30,11 @@ export default function PostDialog(props) {
   };
 
   const handleTitleChange = (e) => {
-    post = { ...post, title: e.target.value };
+    post = { ...post, title: e.target.value, description: document.getElementById('outlined-multiline-static-desc').value };
   };
 
   const handleDescChange = (e) => {
-    post = { ...post, description: e.target.value };
+    post = { ...post, title: document.getElementById('outlined-multiline-static-title').value, description: e.target.value };
   };
 
   const handleSwitchChange = (e) => {
@@ -60,7 +60,7 @@ export default function PostDialog(props) {
         </DialogTitle>
         <DialogContent>
           <TextField
-            id="outlined-multiline-static"
+            id="outlined-multiline-static-title"
             className="type-body"
             label=""
             multiline
@@ -71,7 +71,7 @@ export default function PostDialog(props) {
             onChange={handleTitleChange}
           />
           <TextField
-            id="outlined-multiline-static"
+            id="outlined-multiline-static-desc"
             label=""
             multiline
             fullWidth
