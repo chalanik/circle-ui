@@ -15,6 +15,7 @@
     padding-top: 8px;
     display: inline-flex;
     align-items: center;
+    cursor: pointer;
   }
   
   .responses-container .responses-icon {

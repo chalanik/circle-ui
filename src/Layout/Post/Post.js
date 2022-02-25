@@ -65,7 +65,7 @@ function Post(props) {
   );
 
   const responses = (
-    <div className="responses-container">
+    <div className="responses-container" onClick={handleClick}>
       <CommentIcon fontSize="small" className="responses-icon" />
       <p className="type-body color-secondary-grey">
         <span className="type-body-bold color-secondary-grey">
@@ -112,13 +112,11 @@ function Post(props) {
 
   return (
     <Card>
-      <CardActionArea onClick={handleClick}>
         <CardContent>
           {isPostWithCircle && postWithCircle}
           {isPost && postCard}
           {isComment && comment}
         </CardContent>{" "}
-      </CardActionArea>
     </Card>
   );
 }

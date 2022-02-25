@@ -22,7 +22,7 @@ function Header({title, dashboard}) {
                         <>
                         <img src="bell-icon.svg" className="user-header-container-items" alt="notifications icon"/>
                         <img src="mail-icon.svg" className="user-header-container-items" alt="mail icon"/>
-                        <img className="profile-pic user-header-container-items" src="profile-pic.svg" alt="profile pic"/>
+                        <img className="profile-pic user-header-container-items" src="profile.jpg" alt="profile pic"/>
                         </>
                     }
                     </div>
