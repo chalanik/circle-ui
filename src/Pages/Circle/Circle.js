@@ -33,7 +33,7 @@ function Circle(props) {
 
   user.posts.forEach(post => {
       totalMembers.add(post.user._id);
-      post.comments.map(comment => { 
+      post.comments.forEach(comment => { 
         totalMembers.add(comment._id);
         activeMemebers.add(comment._id)
       });
