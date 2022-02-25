@@ -19,7 +19,7 @@ function Welcome() {
     );
     const data = await response.json();
     if (!data || data?.zip == null) {
-      user = { ...user, _id: data?._id };
+      user = { ...user, _id: data?._id, name: data?.name };
       localStorage.setItem("userFormData", JSON.stringify(user));
     } else {
       isUserRegistered = true;

@@ -65,6 +65,7 @@
 
 .sort-by-text {
     font-size: 14px;
+    padding: 5px;
 }
 
 @media (max-width: 767px) {

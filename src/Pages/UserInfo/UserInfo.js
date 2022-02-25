@@ -10,6 +10,16 @@ import '../../styles.css';
 function UserInfo() {
 
     const [zip, setZip] = useState('');
+    
+    let userData = localStorage.getItem('userFormData');
+    if(userData) {
+        userData = JSON.parse(userData);
+    }
+    if(!userData.name) {
+        userData.name = 'Katie B.';
+    }
+    const [userName] = useState(userData.name);
+
     let user = {};
 
     function continueClickHandler() {
@@ -27,7 +37,7 @@ function UserInfo() {
                 <div className="user-info-form">
                     <div className="user-info-form-items">
                         <div className="text-box-container">
-                            <TextField id="outlined-basic" label="Name" variant="outlined" value={"Katie B."} disabled />
+                            <TextField id="outlined-basic" label="Name" variant="outlined" value={userName} disabled />
                             <div className="tooltip">
                                 <InfoOutlined className="info-icon"></InfoOutlined>
                                 <span className="tooltiptext">
@@ -54,9 +64,9 @@ function UserInfo() {
                 </div>
                 <div className="sample-post">
                     <div className="profile-container">
-                        <img className="profile-pic" src="profile-pic.svg" alt="profile pic" />
+                        <img className="profile-pic" src="profile.jpg" alt="profile pic" />
                         <div className="post-user-info">
-                            <div className="post-username">Katie B.</div>
+                            <div className="post-username">{userName}</div>
                             <div className="post-time">Today 7 pm</div>
                         </div>
                     </div>
