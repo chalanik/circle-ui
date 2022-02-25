@@ -28,6 +28,16 @@ function Circle(props) {
   const [open, setOpen] = React.useState(false);
   const [circle, addPost] = React.useState({ ...cirlceData, posts: posts });
 
+  let [totalMembers,activeMemebers] = [new Set(),new Set()];
+
+  user.posts.map(post => {
+      totalMembers.add(post.user._id);
+      post.comments.map(comment => { 
+        totalMembers.add(comment._id);
+        activeMemebers.add(comment._id)
+      });
+  });
+
   const handleClickOpen = (value) => {
     setOpen(true);
   };
@@ -72,11 +82,11 @@ function Circle(props) {
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
-                <span className="circle-member-info-text">135 members </span>
+                <span className="circle-member-info-text">{totalMembers.size} members </span>
               </div>
               <div className="circle-member-info">
                 <RecordVoiceOverIcon />
-                <span className="circle-member-info-text">20 active now </span>
+                <span className="circle-member-info-text">{activeMemebers.size} active now </span>
               </div>
             </div>
           </div>
