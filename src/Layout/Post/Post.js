@@ -47,11 +47,15 @@ function Post(props) {
     <div className="author-card">
       <img
         className="author-img"
-        src={post.user?.image ? post.user.image : "profile.jpg"}
+        src={
+          !post.anonymous && post.user?.image ? post.user.image : "profile.jpg"
+        }
         alt=""
       />
       <div className="author-details ">
-        <p className="author-name type-body-xs">{post?.user.name}</p>
+        <p className="author-name type-body-xs">
+          {post.anonymous ? "Anonymous" : post?.user.name}
+        </p>
         <p className="author-time type-body-xs color-secondary-grey">
           {getTimeString(post?.createdAt)}
         </p>

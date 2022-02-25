@@ -16,7 +16,7 @@ import userMock from "../../Mocks/user-mock";
 
 function Circle(props) {
   let user = localStorage.getItem("userInfo");
-  if(user == null) {
+  if (user == null) {
     user = userMock;
   } else {
     user = JSON.parse(localStorage.getItem("userInfo"));
@@ -36,8 +36,8 @@ function Circle(props) {
     setOpen(false);
   };
 
-  const handlePost =async (post) => {
-   const res = await fetch(
+  const handlePost = async (post) => {
+    const res = await fetch(
       `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
       {
         method: "POST",
@@ -68,7 +68,7 @@ function Circle(props) {
             className="education-icon"
           />
           <div className="circle-name-title-container">
-            <div className="circle-name-title-header">Education</div>
+            <div className="circle-name-title-header">{circle.name}</div>
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
