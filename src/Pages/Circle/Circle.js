@@ -45,42 +45,21 @@ function Circle(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const validatePost = async (post) => {
-    const res = await await fetch(
-      `https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?classify=True`,
-      {
-        method: "POST",
-        body: post,
-        headers: { 
-          "Content-Type": "text/plain",
-          "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630"
-        },
-      }
-    );
-  }
+  
 
   const handlePost = async (post) => {
-    const moderatorData = await validatePost(post);
-    const moderatorRes = await moderatorData.json();
-    const isValidPost = moderatorRes.Terms.length === 0;
-    if(isValidPost) {
-      const res = await fetch(
-        `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
-        {
-          method: "POST",
-          body: JSON.stringify({ ...post, user: user._id }),
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      post = await res.json();
-      post.user = { _id: user._id, name: user.name };
-      post.circle = { _id: circle._id, name: circle.name };
-      addPost({ ...circle, posts: [...circle.posts, post] });
-    }
-    else  {
-      console.log('Data is not good !!')
-    }
+    const res = await fetch(
+      `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
+      {
+        method: "POST",
+        body: JSON.stringify({ ...post, user: user._id }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    post = await res.json();
+    post.user = { _id: user._id, name: user.name };
+    post.circle = { _id: circle._id, name: circle.name };
+    addPost({ ...circle, posts: [...circle.posts, post] });
   };
 
   const similarCirclesArray = [
