@@ -8,10 +8,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Switch from "@mui/material/Switch";
+import Alert from "@mui/material/Alert";
 import "../../styles.css";
 
 export default function ReplyDialog(props) {
-  const { onClose, open, onComment } = props;
+  const { onClose, open, showErrorMessage, onComment } = props;
 
   const textRef = React.useRef("");
   const switchRef = React.useRef("");
@@ -26,7 +27,6 @@ export default function ReplyDialog(props) {
     comment.content = textRef.current.value;
     comment.anonymous = switchRef.current.checked;
     comment.content && onComment(comment);
-    onClose();
   };
 
   return (
@@ -66,6 +66,13 @@ export default function ReplyDialog(props) {
             buttontext="Post reply"
           ></CircleButton>
         </div>
+        {showErrorMessage ? (
+          <div class="error-msg-container">
+            <Alert severity="error">
+              This post might contain strong language
+            </Alert>
+          </div>
+        ) : null}
       </Dialog>
     </div>
   );
