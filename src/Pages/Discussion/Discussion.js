@@ -59,6 +59,7 @@ function Discussion(props) {
     comment = await res.json();
     comment.user = { _id: user._id, name: user.name };
     setPost({ ...post, comments: [...post.comments, comment] });
+    localStorage.setItem("update", true);
   };
 
   const similarCirclesArray = [

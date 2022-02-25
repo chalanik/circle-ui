@@ -12,7 +12,7 @@ function Welcome() {
   const fetchUsers = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let userId = urlParams.get("id");
-    
+    userId = userId ? userId : "nikhil";
     let user = {};
 
     const response = await fetch(

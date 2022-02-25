@@ -13,6 +13,8 @@ import PostDialog from "../../Layout/PostDialog/PostDialog";
 import "../../styles.css";
 import { useParams } from "react-router-dom";
 import userMock from "../../Mocks/user-mock";
+import { useEffect } from "react";
+import { CircularProgress, Box } from "@mui/material";
 
 function Circle(props) {
   let user = localStorage.getItem("userInfo");
@@ -27,29 +29,40 @@ function Circle(props) {
   let posts = user.posts.filter((post) => cirlceData.posts.includes(post._id));
   const [open, setOpen] = React.useState(false);
   const [showErrorMessage, setErrMessageOpen] = React.useState(false);
-  const [circle, addPost] = React.useState({ ...cirlceData, posts: posts });
+  const [circle, updateCircle] = React.useState();
 
-  let [totalMembers,activeMemebers] = [new Set(),new Set()];
+  let [totalMembers, activeMemebers] = [new Set(), new Set()];
 
-  user.posts.forEach(post => {
-      totalMembers.add(post.user._id);
-      post.comments.forEach(comment => { 
-        totalMembers.add(comment._id);
-        activeMemebers.add(comment._id)
-      });
+  user.posts.forEach((post) => {
+    totalMembers.add(post.user._id);
+    post.comments.forEach((comment) => {
+      totalMembers.add(comment._id);
+      activeMemebers.add(comment._id);
+    });
   });
 
+  useEffect(() => {
+    !circle &&
+      fetch(`https://circle-server.azurewebsites.net/api/v1/circle/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          updateCircle(data);
+        })
+        .catch(() => {
+          updateCircle({ ...cirlceData, posts: posts });
+        });
+  });
 
   const setErrorMessageOnPost = (value) => {
     setErrMessageOpen(value);
-  }
+  };
 
   const handleClickOpen = (value) => {
     setOpen(true);
   };
 
   const handleClose = () => {
-     setOpen(false);
+    setOpen(false);
   };
 
   const validatePost = async (post) => {
@@ -58,23 +71,22 @@ function Circle(props) {
       {
         method: "POST",
         body: post.description,
-        headers: { 
+        headers: {
           "Content-Type": "text/plain",
-          "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630"
+          "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630",
         },
       }
     );
-  }
+  };
 
   const handlePost = async (post) => {
     setErrorMessageOnPost(false);
     const moderatorData = await validatePost(post);
     const moderatorRes = await moderatorData.json();
     const isInValidPost = moderatorRes.Terms && moderatorRes.Terms.length > 0;
-    if(isInValidPost) {
+    if (isInValidPost) {
       setErrorMessageOnPost(true);
-    }
-    else  {
+    } else {
       const res = await fetch(
         `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
         {
@@ -86,7 +98,8 @@ function Circle(props) {
       post = await res.json();
       post.user = { _id: user._id, name: user.name };
       post.circle = { _id: circle._id, name: circle.name };
-      addPost({ ...circle, posts: [...circle.posts, post] });      
+      updateCircle({ ...circle, posts: [...circle.posts, post] });
+      localStorage.setItem("update", true);
       handleClose();
     }
   };
@@ -97,6 +110,20 @@ function Circle(props) {
     "Tutors",
     "SAT/ACT Prep",
   ];
+
+  if (!circle)
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        height: "100vh",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <CircularProgress />
+    </Box>
+  );
   return (
     <>
       <Header dashboard={"true"} />
@@ -112,11 +139,15 @@ function Circle(props) {
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
-                <span className="circle-member-info-text">{totalMembers.size} members </span>
+                <span className="circle-member-info-text">
+                  {totalMembers.size} members{" "}
+                </span>
               </div>
               <div className="circle-member-info">
                 <RecordVoiceOverIcon />
-                <span className="circle-member-info-text">{activeMemebers.size} active now </span>
+                <span className="circle-member-info-text">
+                  {activeMemebers.size} active now{" "}
+                </span>
               </div>
             </div>
           </div>
@@ -172,7 +203,12 @@ function Circle(props) {
         </div>
         <div className="dasboard-space-container"></div>
       </div>
-      <PostDialog showErrorMessage={showErrorMessage} open={open} onPost={handlePost} onClose={handleClose}/>
+      <PostDialog
+        showErrorMessage={showErrorMessage}
+        open={open}
+        onPost={handlePost}
+        onClose={handleClose}
+      />
     </>
   );
 }
