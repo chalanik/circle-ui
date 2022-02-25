@@ -56,7 +56,7 @@ function Welcome() {
         <div className="welcome-container">
           <div className="welcome-image-container">
             <img
-              src="welcome.svg"
+              src="welcome.png"
               alt="Welcome to Circle"
               className="welcome-image"
             />

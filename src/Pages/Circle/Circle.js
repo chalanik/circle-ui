@@ -138,7 +138,7 @@ function Circle(props) {
             className="education-icon"
           />
           <div className="circle-name-title-container">
-            <div className="circle-name-title-header">{circle.name}</div>
+            <div className="circle-name-title-header type-h1">{circle.name}</div>
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
@@ -187,7 +187,7 @@ function Circle(props) {
             </div>
           </div>
           <div className="post-container">
-            {circle.posts.map((res) => {
+            {circle.posts.sort((post)=>post.createdAt).reverse().map((res) => {
               return <Post post={res} key={res._id} isPost={true} />;
             })}
           </div>

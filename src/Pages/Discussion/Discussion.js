@@ -111,7 +111,7 @@ function Discussion(props) {
             className="education-icon"
           />
           <div className="circle-name-title-container">
-            <div className="circle-name-title-header">Education</div>
+            <div className="circle-name-title-header type-h1">Education</div>
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
