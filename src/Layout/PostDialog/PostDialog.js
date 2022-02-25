@@ -54,7 +54,7 @@ export default function PostDialog(props) {
         </DialogTitle>
         <DialogContent>
           <TextField
-            id="outlined-multiline-static"
+            id="outlined-multiline-static-title"
             className="type-body"
             label=""
             multiline
@@ -65,7 +65,7 @@ export default function PostDialog(props) {
             inputRef={titleRef}
           />
           <TextField
-            id="outlined-multiline-static"
+            id="outlined-multiline-static-desc"
             label=""
             multiline
             fullWidth
