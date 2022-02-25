@@ -31,6 +31,7 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+          ### mongodb://circle-mongodb:7aL16n0jB7Avmdhc7rPheZxeb9CHXPFHm9KGJD7kANc2Y92Y2PEadkdnD3s66RepRCT7yP7iGq8dCbCPdl3c5Q==@circle-mongodb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@circle-mongodb@
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
