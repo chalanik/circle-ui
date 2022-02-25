@@ -26,29 +26,69 @@ function Circle(props) {
   let cirlceData = user.circles.find((circle) => circle._id === id);
   let posts = user.posts.filter((post) => cirlceData.posts.includes(post._id));
   const [open, setOpen] = React.useState(false);
+  const [showErrorMessage, setErrMessageOpen] = React.useState(false);
   const [circle, addPost] = React.useState({ ...cirlceData, posts: posts });
+
+  let [totalMembers,activeMemebers] = [new Set(),new Set()];
+
+  user.posts.map(post => {
+      totalMembers.add(post.user._id);
+      post.comments.map(comment => { 
+        totalMembers.add(comment._id);
+        activeMemebers.add(comment._id)
+      });
+  });
+
+
+  const setErrorMessageOnPost = (value) => {
+    setErrMessageOpen(value);
+  }
 
   const handleClickOpen = (value) => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+     setOpen(false);
   };
 
-  const handlePost = async (post) => {
-    const res = await fetch(
-      `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
+  const validatePost = async (post) => {
+    return fetch(
+      `https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?classify=True`,
       {
         method: "POST",
-        body: JSON.stringify({ ...post, user: user._id }),
-        headers: { "Content-Type": "application/json" },
+        body: post.description,
+        headers: { 
+          "Content-Type": "text/plain",
+          "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630"
+        },
       }
     );
-    post = await res.json();
-    post.user = { _id: user._id, name: user.name };
-    post.circle = { _id: circle._id, name: circle.name };
-    addPost({ ...circle, posts: [...circle.posts, post] });
+  }
+
+  const handlePost = async (post) => {
+    setErrorMessageOnPost(false);
+    const moderatorData = await validatePost(post);
+    const moderatorRes = await moderatorData.json();
+    const isInValidPost = moderatorRes.Terms && moderatorRes.Terms.length > 0;
+    if(isInValidPost) {
+      setErrorMessageOnPost(true);
+    }
+    else  {
+      const res = await fetch(
+        `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
+        {
+          method: "POST",
+          body: JSON.stringify({ ...post, user: user._id }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      post = await res.json();
+      post.user = { _id: user._id, name: user.name };
+      post.circle = { _id: circle._id, name: circle.name };
+      addPost({ ...circle, posts: [...circle.posts, post] });      
+      handleClose();
+    }
   };
 
   const similarCirclesArray = [
@@ -72,11 +112,11 @@ function Circle(props) {
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
-                <span className="circle-member-info-text">135 members </span>
+                <span className="circle-member-info-text">{totalMembers.size} members </span>
               </div>
               <div className="circle-member-info">
                 <RecordVoiceOverIcon />
-                <span className="circle-member-info-text">20 active now </span>
+                <span className="circle-member-info-text">{activeMemebers.size} active now </span>
               </div>
             </div>
           </div>
@@ -132,7 +172,7 @@ function Circle(props) {
         </div>
         <div className="dasboard-space-container"></div>
       </div>
-      <PostDialog open={open} onClose={handleClose} onPost={handlePost} />
+      <PostDialog showErrorMessage={showErrorMessage} open={open} onPost={handlePost} onClose={handleClose}/>
     </>
   );
 }
