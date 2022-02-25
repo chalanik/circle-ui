@@ -27,7 +27,7 @@ function Topics() {
         user = { ...user, 'circles': circleIdList };
         localStorage.setItem('userFormData', JSON.stringify(user));
         fetch(
-            `https://express-nikhil.azurewebsites.net/api/v1/user/${user._id}`, {
+            `https://circle-server.azurewebsites.net/api/v1/user/${user._id}`, {
                 method: "POST",
                 body: JSON.stringify({ zip: user.zip, circles: circleIdList }),
                 headers: {
@@ -58,7 +58,7 @@ function Topics() {
                 <h3 className="topic-selection-desc">We call these topics "Circles" and we'll add you to the ones you're interested in. You can always add more later!</h3>
                 <FormGroup className="topic-selection-pool">
                     { circleList.map((c) => (
-                         <div className="topic-selection-checkbox-container">
+                         <div className="topic-selection-checkbox-container" key={c._id}>
                             <FormControlLabel className="topic-selection-checkbox"
                                 control={<Checkbox  onChange={(event) => manageCircles(event, c._id)} />}
                                 label={c.name}

@@ -38,7 +38,7 @@ function Circle(props) {
 
   const handlePost =async (post) => {
    const res = await fetch(
-      `https://express-nikhil.azurewebsites.net/api/v1/circle/${circle._id}/post`,
+      `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
       {
         method: "POST",
         body: JSON.stringify({ ...post, user: user._id }),
@@ -122,7 +122,7 @@ function Circle(props) {
                 <div className="dashboard-heading">Similar Circles</div>
               </div>
               {similarCirclesArray.map((name) => (
-                <div className="circle-name-container">
+                <div className="circle-name-container" key={name}>
                   <img src="not-joined-circle.svg" alt={name} />
                   <div className="circle-name-title">{name}</div>
                 </div>

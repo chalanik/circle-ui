@@ -32,7 +32,7 @@ function Discussion(props) {
   };
 
   useEffect(() => {
-   !post && fetch(`https://express-nikhil.azurewebsites.net/api/v1/post/${id}`)
+   !post && fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
@@ -41,7 +41,7 @@ function Discussion(props) {
 
   const handleComment = async (comment) => {
     console.log(comment);
-    const res = await fetch(`https://express-nikhil.azurewebsites.net/api/v1/post/${id}/comment`, {
+    const res = await fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}/comment`, {
       method: "POST",
       body: JSON.stringify({ ...comment, user: user._id, post: post._id }),
       headers: { "Content-Type": "application/json" },
@@ -131,7 +131,7 @@ function Discussion(props) {
           </div>
           <div className="post-container">
             {post.comments.map((res) => {
-              return <Post post={res} key={res._id} isComment={true} had />;
+              return <Post post={res} key={res._id} isComment={true} />;
             })}
           </div>
         </div>
@@ -142,7 +142,7 @@ function Discussion(props) {
                 <div className="dashboard-heading">Similar Circles</div>
               </div>
               {similarCirclesArray.map((name) => (
-                <div className="circle-name-container">
+                <div className="circle-name-container" key={name}>
                   <img src="not-joined-circle.svg" alt={name} />
                   <div className="circle-name-title">{name}</div>
                 </div>

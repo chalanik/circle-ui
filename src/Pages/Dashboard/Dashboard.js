@@ -8,6 +8,8 @@ import Post from "../../Layout/Post/Post";
 import YourCircles from "../../Layout/YourCircles/YourCircles";
 import { useNavigate } from "react-router-dom";
 import userMock from "../../Mocks/user-mock";
+import { CircularProgress, Box } from "@mui/material";
+import { useEffect } from "react";
 
 function Dashboard() {
   let userInfo = localStorage.getItem("userInfo");
@@ -16,14 +18,39 @@ function Dashboard() {
   } else {
     userInfo = JSON.parse(localStorage.getItem("userInfo"));
   }
+  const [posts, setPost] = React.useState(userInfo.posts);
 
-  const posts = userInfo.posts;
   const navigate = useNavigate();
 
   const handlePostClick = (post) => {
     console.log(post);
     navigate(`/post/`, { state: post });
   };
+
+
+  useEffect(() => {
+    !posts.length && fetch(`https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`)
+       .then((res) => res.json())
+       .then((data) => {
+         localStorage.setItem("userInfo", JSON.stringify(data));
+         setPost(data.posts);
+       });
+   });
+
+  
+  if (!posts)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
 
   return (
     <>
@@ -74,6 +101,7 @@ function Dashboard() {
                   post={res}
                   isPostWithCircle={true}
                   onPostClick={handlePostClick}
+                  key={res._id}
                 />
               );
             })}
