@@ -31,7 +31,7 @@ function Circle(props) {
 
   let [totalMembers,activeMemebers] = [new Set(),new Set()];
 
-  user.posts.map(post => {
+  user.posts.forEach(post => {
       totalMembers.add(post.user._id);
       post.comments.map(comment => { 
         totalMembers.add(comment._id);
