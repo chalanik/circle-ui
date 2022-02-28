@@ -28,9 +28,10 @@ function Welcome() {
       "dhinesh",
       "charan",
       "harry",
+      "uwe"
     ].includes(userId)
       ? userId
-      : "nikhil";
+      : "katie";
     let user = {};
 
     const response = await fetch(

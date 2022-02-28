@@ -17,6 +17,7 @@ function Dependents() {
             <Header title="Join Circle"/>
             <div className="user-info-container">
                 <img src="dependent-icon.svg" alt="dependent icon" className="edit-profile-pic" />
+                <h2 className="user-info-title type-h1">Let's get some of your basic info</h2>
                 <FormGroup>
                     <div className="dependents-checkbox-container">
                         <FormControlLabel className="dependents-checkbox" control={<Checkbox checked/>} label="Children" />
