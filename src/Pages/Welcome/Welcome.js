@@ -4,7 +4,6 @@ import "./Welcome.css";
 import Header from "../../Layout/Header/Header";
 import CircleButton from "../../Layout/Button/CircleButton";
 import { CircularProgress, Box } from "@mui/material";
-import userMock from "../../Mocks/user-mock";
 
 function Welcome() {
   // set loaded state
