@@ -29,17 +29,16 @@ function Dashboard() {
 
   useEffect(() => {
     const update = localStorage.getItem("update");
-    (!posts.length ||
-      update === "true") &&
-        fetch(
-          `https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            localStorage.setItem("userInfo", JSON.stringify(data));
-            setPost(data.posts);
-            localStorage.setItem("update", "false");
-          });
+    (!posts.length || update === "true") &&
+      fetch(
+        `https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("userInfo", JSON.stringify(data));
+          setPost(data.posts);
+          localStorage.setItem("update", "false");
+        });
   });
 
   if (!posts)
@@ -61,7 +60,11 @@ function Dashboard() {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="dashboard-left-section">
-          <YourCircles circles={userInfo.circles} />
+          <YourCircles
+            circles={userInfo.circles.sort(
+              (a, b) => b.posts.length - a.posts.length
+            )}
+          />
 
           <Card className="trending-topics">
             <CardContent>
@@ -74,9 +77,15 @@ function Dashboard() {
               <div className="circle-name-title circle-topics">
                 Work life balance
               </div>
-              <div className="circle-name-title circle-topics">College admissions 2022</div>
-              <div className="circle-name-title circle-topics">Teaching child about masking</div>
-              <div className="circle-name-title circle-topics">Covid protocols in NYC public schools</div>
+              <div className="circle-name-title circle-topics">
+                College admissions 2022
+              </div>
+              <div className="circle-name-title circle-topics">
+                Teaching child about masking
+              </div>
+              <div className="circle-name-title circle-topics">
+                Covid protocols in NYC public schools
+              </div>
             </CardContent>
           </Card>
         </div>

@@ -18,6 +18,7 @@ import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
 import userMock from "../../Mocks/user-mock";
 import { validatePost } from "../../Utility/Utils";
+import CTACard from "../../Layout/CTACard/CTACard";
 
 function Discussion(props) {
   let user = localStorage.getItem("userInfo");
@@ -181,6 +182,7 @@ function Discussion(props) {
               ))}
             </CardContent>
           </Card>
+          <CTACard />
         </div>
         <div className="dasboard-space-container"></div>
       </div>
