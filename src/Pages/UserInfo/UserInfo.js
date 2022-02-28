@@ -36,7 +36,7 @@ function UserInfo() {
 
   return (
     <>
-      <Header title="Join Circle" user={userData} />
+      <Header title="Join Circle" user={userData} progress={25} />
       <div className="user-info-container">
         <img
           src="basic-info.svg"
@@ -86,10 +86,9 @@ function UserInfo() {
         <div className="posts-container">
           Here is how your posts will appear
         </div>
-        
+
         <div className="sample-post">
-          
-        <Post post={samplePost} isPost={true} />
+          <Post post={samplePost} isPost={true} />
         </div>
         <div
           className="continue-button-container"

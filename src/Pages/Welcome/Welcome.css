@@ -42,7 +42,7 @@
 
 .welcome-text-content {
     width: 90%;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: normal;
     padding: 5% 10% 5% 0;
     letter-spacing: 0.46px;
@@ -51,7 +51,7 @@
 
 .welcome-text {
     font-family: MS Gloriola II Display;
-    font-size: 60px;
+    font-size: 50px;
     color: white;
 }
 

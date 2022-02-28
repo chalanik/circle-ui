@@ -53,7 +53,7 @@ function Topics() {
 
   return (
     <>
-      <Header title="Join Circle" />
+      <Header title="Join Circle" progress={75} />
       <div className="topic-selection-container">
         <img
           src="interested-topics-icon.svg"
@@ -80,7 +80,11 @@ function Topics() {
             </div>
           ))}
         </FormGroup>
-        <Accordion disableGutters={true} elevation={1} className="topic-accordion" >
+        <Accordion
+          disableGutters={true}
+          elevation={1}
+          className="topic-accordion"
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
