@@ -45,3 +45,11 @@
         width: 90%;
     }
 }
+
+
+.topic-accordion{
+    padding: 0;
+    width: 60%;
+    justify-content: center;
+    margin: 20px auto;
+}

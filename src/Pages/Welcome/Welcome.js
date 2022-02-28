@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "./Welcome.css";
 import Header from "../../Layout/Header/Header";
 import CircleButton from "../../Layout/Button/CircleButton";
+import { CircularProgress, Box } from "@mui/material";
+import userMock from "../../Mocks/user-mock";
 
 function Welcome() {
+  // set loaded state
+  const [loaded, setLoaded] = React.useState(false);
   const navigate = useNavigate();
 
   let isUserRegistered = false;
@@ -36,6 +40,7 @@ function Welcome() {
     } else {
       isUserRegistered = true;
       localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate("/dashboard-container");
     }
   };
 
@@ -48,8 +53,13 @@ function Welcome() {
   };
 
   useEffect(() => {
-    fetchCircles();
-    fetchUsers();
+    Promise.all([fetchUsers(), fetchCircles()])
+      .then(() => {
+        setLoaded(true);
+      })
+      .catch(() => {
+        setLoaded(true);
+      });
   });
 
   function getStartedClick() {
@@ -59,7 +69,19 @@ function Welcome() {
       navigate("/user-info");
     }
   }
-
+  if (!loaded)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   return (
     <>
       <Header />
