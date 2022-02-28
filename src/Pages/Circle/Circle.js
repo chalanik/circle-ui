@@ -101,7 +101,9 @@ function Circle(props) {
       post = await res.json();
       post.user = { _id: user._id, name: user.name };
       post.circle = { _id: circle._id, name: circle.name };
-      updateCircle({ ...circle, posts: [...circle.posts, post] });
+      // TODO: are we mutating the state directly?
+      circle.posts.unshift(post);
+      updateCircle(circle);
       localStorage.setItem("update", true);
       handleClose();
     }

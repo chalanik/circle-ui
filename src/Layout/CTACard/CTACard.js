@@ -5,7 +5,7 @@ function CTACard(props) {
     title: "Open a 529",
     description: "Lorem ipsum lorem ipsum lorem ipsum",
     linkText: "Build a customized portfolio today",
-    link: "",
+    link: "https://www.morganstanley.com/articles/529-plans-ways-to-pay-for-college/",
   };
   const card = (
     <div className="cta-card">

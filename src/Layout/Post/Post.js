@@ -5,6 +5,7 @@ import "../../styles.css";
 import CommentIcon from "@mui/icons-material/Comment";
 import "./Post.css";
 import { useNavigate } from "react-router-dom";
+import { CardActionArea } from "@mui/material";
 
 //given Date timestamp, return the date in the form "Year-Month-Day, 12:00 PM"
 function getTimeString(timestamp) {
@@ -64,7 +65,8 @@ function Post(props) {
   );
 
   const responses = (
-    <div className="responses-container" onClick={handleClick}>
+    <CardActionArea onClick={handleClick}>
+    <div className="responses-container" >
       <CommentIcon fontSize="small" className="responses-icon" />
       <p className="type-body color-secondary-grey">
         <span className="type-body-bold color-secondary-grey">
@@ -72,7 +74,7 @@ function Post(props) {
         </span>{" "}
         responses
       </p>
-    </div>
+    </div></CardActionArea>
   );
 
   const circle = (

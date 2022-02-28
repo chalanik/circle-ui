@@ -17,7 +17,11 @@ import { useParams } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
 import userMock from "../../Mocks/user-mock";
-import { validatePost } from "../../Utility/Utils";
+import {
+  sortByCreatedAt,
+  sortByScore,
+  validatePost,
+} from "../../Utility/Utils";
 import CTACard from "../../Layout/CTACard/CTACard";
 
 function Discussion(props) {
@@ -32,6 +36,21 @@ function Discussion(props) {
   const [post, setPost] = React.useState();
   const [open, setOpen] = React.useState(false);
   const [showErrorMessage, setErrMessageOpen] = React.useState(false);
+  const [sort, setSort] = React.useState("latest");
+
+  const handleSort = (event) => {
+    // if value is latest sort posts by createdAt
+    if (event.target.value === "latest") {
+      setSort("latest");
+      post.comments.sort(sortByCreatedAt);
+      setPost(post);
+    } else {
+      // if value is popular sort posts by score
+      setSort("popular");
+      post.comments.sort(sortByScore);
+      setPost(post);
+    }
+  };
 
   const handleClickOpen = (value) => {
     setOpen(true);
@@ -50,6 +69,7 @@ function Discussion(props) {
       fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}`)
         .then((res) => res.json())
         .then((data) => {
+          data.comments.sort(sortByCreatedAt);
           setPost(data);
         })
         .catch(() => {
@@ -76,7 +96,8 @@ function Discussion(props) {
       );
       comment = await res.json();
       comment.user = { _id: user._id, name: user.name };
-      setPost({ ...post, comments: [...post.comments, comment] });
+      post.comments.unshift(comment)
+      setPost(post);
       localStorage.setItem("update", true);
       handleClose();
     }
@@ -154,11 +175,11 @@ function Discussion(props) {
               <span className="sort-by-text">Sort by</span>
               <Select
                 className="circle-sort-select"
-                value="Popular"
-                // onChange={handleChange}
+                value={sort}
+                onChange={handleSort}
               >
-                <MenuItem value={"Popular"}>Popular</MenuItem>
-                <MenuItem value={"Latest"}>Latest</MenuItem>
+                <MenuItem value={"popular"}>Popular</MenuItem>
+                <MenuItem value={"latest"}>Latest</MenuItem>
               </Select>
             </div>
           </div>

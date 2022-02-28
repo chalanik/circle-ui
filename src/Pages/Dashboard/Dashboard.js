@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import userMock from "../../Mocks/user-mock";
 import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
+import { sortByCreatedAt, sortByScore } from "../../Utility/Utils";
 
 function Dashboard() {
   let userInfo = localStorage.getItem("userInfo");
@@ -18,13 +19,28 @@ function Dashboard() {
   } else {
     userInfo = JSON.parse(localStorage.getItem("userInfo"));
   }
-  const [posts, setPost] = React.useState(userInfo.posts);
+  const [posts, setPost] = React.useState(userInfo.posts.sort(sortByScore));
+
+  // set sort state
+  const [sort, setSort] = React.useState("popular");
 
   const navigate = useNavigate();
 
   const handlePostClick = (post) => {
     console.log(post);
     navigate(`/post/`, { state: post });
+  };
+
+  const handleSort = (event) => {
+    // if value is latest sort posts by createdAt
+    if (event.target.value === "latest") {
+      setSort("latest");
+      setPost(posts.sort(sortByCreatedAt));
+    } else {
+      // if value is popular sort posts by score
+      setSort("popular");
+      setPost(posts.sort(sortByScore));
+    }
   };
 
   useEffect(() => {
@@ -36,6 +52,9 @@ function Dashboard() {
         .then((res) => res.json())
         .then((data) => {
           localStorage.setItem("userInfo", JSON.stringify(data));
+          sort === "latest"
+            ? data.posts.sort(sortByCreatedAt)
+            : data.posts.sort(sortByScore);
           setPost(data.posts);
           localStorage.setItem("update", "false");
         });
@@ -98,11 +117,11 @@ function Dashboard() {
               <span className="sort-by-text">Sort by</span>
               <Select
                 className="circle-sort-select"
-                value="Popular"
-                // onChange={handleChange}
+                value={sort}
+                onChange={handleSort}
               >
-                <MenuItem value={"Popular"}>Popular</MenuItem>
-                <MenuItem value={"Latest"}>Latest</MenuItem>
+                <MenuItem value={"popular"}>Popular</MenuItem>
+                <MenuItem value={"latest"}>Latest</MenuItem>
               </Select>
             </div>
           </div>
