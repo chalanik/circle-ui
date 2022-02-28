@@ -18,7 +18,7 @@ import CTACard from "../../Layout/CTACard/CTACard";
 import { CircularProgress, Box } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { validatePost } from "../../Utility/Utils";
+import { getIconPath, validatePost } from "../../Utility/Utils";
 
 function Circle(props) {
   let user = localStorage.getItem("userInfo");
@@ -127,7 +127,7 @@ function Circle(props) {
       <div className="your-circle-header-container">
         <div className="your-circle-name-container">
           <img
-            src="education-icon.svg"
+            src={getIconPath(circle.name)}
             alt="education icon"
             className="education-icon"
           />
@@ -202,7 +202,7 @@ function Circle(props) {
               </div>
               {similarCirclesArray.map((name) => (
                 <div className="circle-name-container" key={name}>
-                  <img src="not-joined-circle.svg" alt={name} />
+                  <img src="education-icon.svg" alt={name} />
                   <div className="circle-name-title">{name}</div>
                 </div>
               ))}

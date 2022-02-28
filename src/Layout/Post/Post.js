@@ -47,9 +47,7 @@ function Post(props) {
     <div className="author-card">
       <img
         className="author-img"
-        src={
-          !post.anonymous ? post.user.name+".png" : "profile.jpg"
-        }
+        src={!post?.anonymous ? post.user.name + ".png" : "profile.jpg"}
         alt=""
       />
       <div className="author-details ">
@@ -64,18 +62,19 @@ function Post(props) {
     </div>
   );
 
-  const responses = (
+  const responses = post?.comments ? (
     <CardActionArea onClick={handleClick}>
-    <div className="responses-container" >
-      <CommentIcon fontSize="small" className="responses-icon" />
-      <p className="type-body color-secondary-grey">
-        <span className="type-body-bold color-secondary-grey">
-          {post?.comments?.length}
-        </span>{" "}
-        responses
-      </p>
-    </div></CardActionArea>
-  );
+      <div className="responses-container">
+        <CommentIcon fontSize="small" className="responses-icon" />
+        <p className="type-body color-secondary-grey">
+          <span className="type-body-bold color-secondary-grey">
+            {post?.comments?.length}
+          </span>{" "}
+          responses
+        </p>
+      </div>
+    </CardActionArea>
+  ) : null;
 
   const circle = (
     <div className="circle-container">
@@ -122,9 +121,9 @@ function Post(props) {
       case "Childcare":
         return "childcare-icon.svg";
       case "Activities":
-          return "activities-icon.svg";
+        return "activities-icon.svg";
       case "Elderly Care":
-          return "elderly-care-icon.svg";
+        return "elderly-care-icon.svg";
       default:
         return "not-joined-circle.svg";
     }
@@ -132,11 +131,11 @@ function Post(props) {
 
   return (
     <Card>
-        <CardContent>
-          {isPostWithCircle && postWithCircle}
-          {isPost && postCard}
-          {isComment && comment}
-        </CardContent>{" "}
+      <CardContent>
+        {isPostWithCircle && postWithCircle}
+        {isPost && postCard}
+        {isComment && comment}
+      </CardContent>{" "}
     </Card>
   );
 }

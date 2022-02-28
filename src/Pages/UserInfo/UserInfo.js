@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import InfoOutlined from "@mui/icons-material/InfoOutlined";
 import "./UserInfo.css";
 import "../../styles.css";
+import Post from "../../Layout/Post/Post";
 
 function UserInfo() {
   const [zip, setZip] = useState("");
@@ -26,6 +27,12 @@ function UserInfo() {
     user = { ...user, zip: zip };
     localStorage.setItem("userFormData", JSON.stringify(user));
   }
+
+  const samplePost = {
+    title: "I'm so excited to have joined Circle!",
+    createdAt: Date.now(),
+    user: userData,
+  };
 
   return (
     <>
@@ -79,21 +86,10 @@ function UserInfo() {
         <div className="posts-container">
           Here is how your posts will appear
         </div>
+        
         <div className="sample-post">
-          <div className="profile-container">
-            <img
-              className="profile-pic"
-              src={userName + ".png"}
-              alt="profile pic"
-            />
-            <div className="post-user-info">
-              <div className="post-username">{userName}</div>
-              <div className="post-time">Today 7 pm</div>
-            </div>
-          </div>
-          <div className="post-content">
-            I'm so excited to have joined Circle!
-          </div>
+          
+        <Post post={samplePost} isPost={true} />
         </div>
         <div
           className="continue-button-container"
