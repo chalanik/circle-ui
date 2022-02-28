@@ -12,7 +12,7 @@ function Launch() {
 
     return (
         <div>
-            <img className="launch-container" src="launch.png" alt="launch" onClick={handleClick}/>
+            <img className="launch-container" src="launch.jfif" alt="launch" onClick={handleClick}/>
         </div>
     );
 }
