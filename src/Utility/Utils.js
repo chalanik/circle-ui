@@ -24,6 +24,13 @@ export const sortByScore = (a, b) => {
   return b.score - a.score;
 };
 
+// sort by circle function
+export const sortByCircle = (a, b) => {
+  a = a?.circle?._id?.toLowerCase();
+  b = b?.circle?._id?.toLowerCase();
+  return a < b ? -1 : a > b ? 1 : 0;
+};
+
 export function getIconPath(topic) {
   switch (topic) {
     case "Education":
@@ -35,9 +42,9 @@ export function getIconPath(topic) {
     case "Childcare":
       return "childcare-icon.svg";
     case "Activities":
-        return "activities-icon.svg";
+      return "activities-icon.svg";
     case "Elderly Care":
-        return "elderly-care-icon.svg";
+      return "elderly-care-icon.svg";
     default:
       return "not-joined-circle.svg";
   }

@@ -26,9 +26,8 @@ function Welcome() {
       "katie",
       "karthik",
       "dhinesh",
-      "charan",
       "harry",
-      "uwe"
+      "uwe",
     ].includes(userId)
       ? userId
       : "katie";
@@ -70,13 +69,13 @@ function Welcome() {
       });
   });
 
-  function getStartedClick() {
+  const handleClick = () => {
     if (isUserRegistered) {
       navigate("/dashboard-container");
     } else {
       navigate("/user-info");
     }
-  }
+  };
   if (!loaded)
     return (
       <Box
@@ -102,18 +101,18 @@ function Welcome() {
               className="welcome-image"
             />
             <div className="welcome-image-div">
-              <div className="welcome-text">Welcome to Circle</div>
-              <div className="welcome-text-content">
+              <h1 className="welcome-text">Welcome to Circle</h1>
+              <p className="welcome-text-content">
                 Circle is an exclusive employee only social networking platform
                 where users can seek advice and develop deeper social
                 connections with their colleagues by sharing tips and
                 experiences on life such as parenting, care giving and so much
                 more.
-              </div>
+              </p>
               <div>
                 <CircleButton
                   buttontext="Get started"
-                  onClick={getStartedClick}
+                  onClick={handleClick}
                 ></CircleButton>
               </div>
             </div>
@@ -166,7 +165,7 @@ function Welcome() {
           <div className="welcome-button-container">
             <CircleButton
               buttontext="Get started"
-              onClick={getStartedClick}
+              onClick={handleClick}
             ></CircleButton>
           </div>
         </div>

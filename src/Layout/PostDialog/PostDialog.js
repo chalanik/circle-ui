@@ -15,8 +15,6 @@ import "../../styles.css";
 export default function PostDialog(props) {
   const { onClose, open, showErrorMessage, onPost } = props;
 
-  console.log("Data : ", onClose, open, showErrorMessage, onPost);
-
   let post = { title: "", description: "" };
 
   const titleRef = React.useRef("");

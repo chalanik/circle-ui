@@ -9,12 +9,15 @@ import YourCircles from "../../Layout/YourCircles/YourCircles";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
-import { sortByCreatedAt, sortByScore } from "../../Utility/Utils";
+import {
+  sortByCreatedAt,
+  sortByScore,
+  sortByCircle,
+} from "../../Utility/Utils";
 
 function Dashboard() {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-  const  userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  
   const [posts, setPost] = React.useState(userInfo.posts.sort(sortByScore));
 
   // set sort state
@@ -32,10 +35,14 @@ function Dashboard() {
     if (event.target.value === "latest") {
       setSort("latest");
       setPost(posts.sort(sortByCreatedAt));
-    } else {
+    } else if (event.target.value === "popular") {
       // if value is popular sort posts by score
       setSort("popular");
       setPost(posts.sort(sortByScore));
+    } else {
+      // if value is popular sort posts by circle
+      setSort("circle");
+      setPost(posts.sort(sortByCircle));
     }
   };
 
@@ -118,6 +125,7 @@ function Dashboard() {
               >
                 <MenuItem value={"popular"}>Popular</MenuItem>
                 <MenuItem value={"latest"}>Latest</MenuItem>
+                <MenuItem value={"circle"}>Circle</MenuItem>
               </Select>
             </div>
           </div>

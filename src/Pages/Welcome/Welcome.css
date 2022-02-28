@@ -50,11 +50,8 @@
 }
 
 .welcome-text {
-    font-family: MS Gloriola II Std;
-    padding-top: 7%;
-    font-size: 46px;
-    line-height: 50.6px;
-    font-weight: 300;
+    font-family: MS Gloriola II Display;
+    font-size: 60px;
     color: white;
 }
 

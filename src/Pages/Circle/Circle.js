@@ -18,7 +18,12 @@ import CTACard from "../../Layout/CTACard/CTACard";
 import { CircularProgress, Box } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { getIconPath, validatePost } from "../../Utility/Utils";
+import {
+  getIconPath,
+  sortByCreatedAt,
+  sortByScore,
+  validatePost,
+} from "../../Utility/Utils";
 
 function Circle(props) {
   let user = localStorage.getItem("userInfo");
@@ -36,6 +41,21 @@ function Circle(props) {
   const [circle, updateCircle] = React.useState();
 
   let [totalMembers, activeMemebers] = [new Set(), new Set()];
+  const [sort, setSort] = React.useState("latest");
+
+  const handleSort = (event) => {
+    // if value is latest sort posts by createdAt
+    if (event.target.value === "latest") {
+      setSort("latest");
+      circle.posts.sort(sortByCreatedAt);
+      updateCircle(circle);
+    } else {
+      // if value is popular sort posts by score
+      setSort("popular");
+      circle.posts.sort(sortByScore);
+      updateCircle(circle);
+    }
+  };
 
   user.posts.forEach((post) => {
     totalMembers.add(post.user._id);
@@ -50,6 +70,7 @@ function Circle(props) {
       fetch(`https://circle-server.azurewebsites.net/api/v1/circle/${id}`)
         .then((res) => res.json())
         .then((data) => {
+          data.posts.sort(sortByCreatedAt);
           updateCircle(data);
         })
         .catch(() => {
@@ -177,21 +198,18 @@ function Circle(props) {
               <span className="sort-by-text">Sort by</span>
               <Select
                 className="circle-sort-select"
-                value="Popular"
-                // onChange={handleChange}
+                value={sort}
+                onChange={handleSort}
               >
-                <MenuItem value={"Popular"}>Popular</MenuItem>
-                <MenuItem value={"Latest"}>Latest</MenuItem>
+                <MenuItem value={"popular"}>Popular</MenuItem>
+                <MenuItem value={"latest"}>Latest</MenuItem>
               </Select>
             </div>
           </div>
           <div className="post-container">
-            {circle.posts
-              .sort((post) => post.createdAt)
-              .reverse()
-              .map((res) => {
-                return <Post post={res} key={res._id} isPost={true} />;
-              })}
+            {circle.posts.map((res) => {
+              return <Post post={res} key={res._id} isPost={true} />;
+            })}
           </div>
         </div>
         <div className="circle-right-section">
