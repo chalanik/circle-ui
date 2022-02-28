@@ -73,7 +73,7 @@ function Circle(props) {
       `https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?classify=True`,
       {
         method: "POST",
-        body: post.description,
+        body: post.title + " " + post.description,
         headers: {
           "Content-Type": "text/plain",
           "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630",
@@ -140,7 +140,9 @@ function Circle(props) {
             className="education-icon"
           />
           <div className="circle-name-title-container">
-            <div className="circle-name-title-header type-h1">{circle.name}</div>
+            <div className="circle-name-title-header type-h1">
+              {circle.name}
+            </div>
             <div className="circle-member-info-container">
               <div className="circle-member-info">
                 <PeopleOutlineIcon />
@@ -164,7 +166,10 @@ function Circle(props) {
       <div className="dashboard-container">
         <div className="dasboard-space-container"></div>
         <div className="circle-left-section">
-          <Link className="dashboard-back-button type-link-xl" to={`/dashboard-container`}>
+          <Link
+            className="dashboard-back-button type-link-xl"
+            to={`/dashboard-container`}
+          >
             <ArrowBack className="arrow-back" /> Back to Dashboard
           </Link>
           <div className="dashboard-heading-container">
@@ -189,9 +194,12 @@ function Circle(props) {
             </div>
           </div>
           <div className="post-container">
-            {circle.posts.sort((post)=>post.createdAt).reverse().map((res) => {
-              return <Post post={res} key={res._id} isPost={true} />;
-            })}
+            {circle.posts
+              .sort((post) => post.createdAt)
+              .reverse()
+              .map((res) => {
+                return <Post post={res} key={res._id} isPost={true} />;
+              })}
           </div>
         </div>
         <div className="circle-right-section">
@@ -209,6 +217,25 @@ function Circle(props) {
             </CardContent>
           </Card>
           <CTACard />
+          <Card className="your-users">
+            <CardContent>
+              <div className="your-circles-heading">
+                <div className="dashboard-heading">Active Members</div>
+              </div>
+              {circle.users.map((user) => (
+                <div className="circle-name-container" key={user._id}>
+                  <img
+                    src="profile.jpg"
+                    alt={user.name}
+                    className="profile-pic"
+                  />
+                  <div className="user-name-title type-body-bold">
+                    {user.name}
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
         </div>
         <div className="dasboard-space-container"></div>
       </div>

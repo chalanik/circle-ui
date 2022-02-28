@@ -17,6 +17,10 @@
     height: 90px;
 }
 
+.user-name-title{
+    padding-left: 8px;
+}
+
 .your-circle-name-container {
     display: flex;
     margin: 2% 10%;
@@ -67,6 +71,10 @@
 
 .dashboard-back-button{
     display : flex
+}
+
+.your-users{
+    margin: 16px 0;
 }
 
 @media (max-width: 767px) {
