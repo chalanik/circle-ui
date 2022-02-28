@@ -11,10 +11,11 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import './Dependents.css';
 
 function Dependents() {
+    const user = JSON.parse(localStorage.getItem("userFormData"));
 
     return (
         <>
-            <Header title="Join Circle"/>
+            <Header title="Join Circle" user={user}/>
             <div className="user-info-container">
                 <img src="dependent-icon.svg" alt="dependent icon" className="edit-profile-pic" />
                 <h2 className="user-info-title type-h1">Let's get some of your basic info</h2>

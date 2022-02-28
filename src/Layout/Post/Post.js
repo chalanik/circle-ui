@@ -48,7 +48,7 @@ function Post(props) {
       <img
         className="author-img"
         src={
-          !post.anonymous && post.user?.image ? post.user.image : "profile.jpg"
+          !post.anonymous ? post.user.name+".png" : "profile.jpg"
         }
         alt=""
       />

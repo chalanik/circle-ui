@@ -128,7 +128,7 @@ function Discussion(props) {
     );
   return (
     <>
-      <Header dashboard={"true"} />
+      <Header dashboard={"true"} user={user}/>
       <div className="your-circle-header-container">
         <div className="your-circle-name-container">
           <img

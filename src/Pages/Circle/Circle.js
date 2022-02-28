@@ -69,10 +69,11 @@ function Circle(props) {
     setOpen(false);
   };
 
-
   const handlePost = async (post) => {
     setErrorMessageOnPost(false);
-    const moderatorData = await validatePost(post.title + " " + post.description);
+    const moderatorData = await validatePost(
+      post.title + " " + post.description
+    );
     let isInValidPost;
     if (moderatorData?.ok) {
       const moderatorRes = await moderatorData.json();
@@ -122,7 +123,7 @@ function Circle(props) {
     );
   return (
     <>
-      <Header dashboard={"true"} />
+      <Header dashboard={"true"} user={user} />
       <div className="your-circle-header-container">
         <div className="your-circle-name-container">
           <img
@@ -216,7 +217,7 @@ function Circle(props) {
               {circle.users.map((user) => (
                 <div className="circle-name-container" key={user._id}>
                   <img
-                    src="profile.jpg"
+                    src={user.name + ".png"}
                     alt={user.name}
                     className="profile-pic"
                   />
