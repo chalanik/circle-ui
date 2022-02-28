@@ -107,8 +107,7 @@ function Welcome() {
                 where users can seek advice and develop deeper social
                 connections with their colleagues by sharing tips and
                 experiences on life such as parenting, care giving and so much
-                more. It is a place where you can gain insights and knowledge on
-                navigating life from trustworthy sources, your own colleagues.
+                more.
               </div>
               <div>
                 <CircleButton

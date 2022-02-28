@@ -211,7 +211,7 @@ function Circle(props) {
           <Card className="your-users">
             <CardContent>
               <div className="your-circles-heading">
-                <div className="dashboard-heading">Active Members</div>
+                <div className="dashboard-heading">Members</div>
               </div>
               {circle.users.map((user) => (
                 <div className="circle-name-container" key={user._id}>

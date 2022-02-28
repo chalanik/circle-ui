@@ -42,10 +42,9 @@
 
 .welcome-text-content {
     width: 90%;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
     padding: 5% 10% 5% 0;
-    line-height: 19px;
     letter-spacing: 0.46px;
     color: white;
 }
