@@ -82,7 +82,7 @@ export default function PostDialog(props) {
           ></CircleButton>
         </div>
         {showErrorMessage ? (
-          <div class="error-msg-container">
+          <div className=""="error-msg-container">
             <Alert severity="error">
               This post might contain strong language
             </Alert>

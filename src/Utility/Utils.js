@@ -1,7 +1,7 @@
 export const validatePost = async (message) => {
   const key1 = "d5c832364f4d453b80e847e4d7ec7d10"
-  const key2 = "95f800f642f1475bb5ea2e14e79e0f0d"
-  const endpoint = "https://circle-cm.cognitiveservices.azure.com/"
+  // const key2 = "95f800f642f1475bb5ea2e14e79e0f0d"
+  // const endpoint = "https://circle-cm.cognitiveservices.azure.com/"
   return fetch(
     `https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?classify=True`,
     {
