@@ -7,18 +7,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Post from "../../Layout/Post/Post";
 import YourCircles from "../../Layout/YourCircles/YourCircles";
 import { useNavigate } from "react-router-dom";
-import userMock from "../../Mocks/user-mock";
 import { CircularProgress, Box } from "@mui/material";
 import { useEffect } from "react";
 import { sortByCreatedAt, sortByScore } from "../../Utility/Utils";
 
 function Dashboard() {
-  let userInfo = localStorage.getItem("userInfo");
-  if (userInfo == null) {
-    userInfo = userMock;
-  } else {
-    userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  }
+
+  const  userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  
   const [posts, setPost] = React.useState(userInfo.posts.sort(sortByScore));
 
   // set sort state

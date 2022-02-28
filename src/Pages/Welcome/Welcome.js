@@ -4,6 +4,7 @@ import "./Welcome.css";
 import Header from "../../Layout/Header/Header";
 import CircleButton from "../../Layout/Button/CircleButton";
 import { CircularProgress, Box } from "@mui/material";
+import userMock from "../../Mocks/user-mock";
 
 function Welcome() {
   // set loaded state
@@ -35,14 +36,18 @@ function Welcome() {
     const response = await fetch(
       `https://circle-server.azurewebsites.net/api/v1/user/${userId}`
     );
-    const data = await response.json();
-    if (!data || data?.zip == null) {
-      user = { ...user, _id: data?._id, name: data?.name };
-      localStorage.setItem("userFormData", JSON.stringify(user));
-    } else {
-      isUserRegistered = true;
+    if (response.ok) {
+      const data = await response.json();
+      if (data && data?.zip && data?.circles?.length) {
+        isUserRegistered = true;
+        // navigate("/dashboard-container");
+      } else {
+        user = { ...user, _id: data?._id, name: data?.name };
+        localStorage.setItem("userFormData", JSON.stringify(user));
+      }
       localStorage.setItem("userInfo", JSON.stringify(data));
-      // navigate("/dashboard-container");
+    } else {
+      localStorage.setItem("userInfo", JSON.stringify(userMock));
     }
   };
 
