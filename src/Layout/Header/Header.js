@@ -1,12 +1,18 @@
 import React from "react";
 import "./Header.css";
+import { useNavigate } from "react-router-dom";
 
 function Header({ title, dashboard, user }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    dashboard && navigate("/dashboard-container");
+  };
+
   return (
     <header className="header">
       <div className="header-container">
         <div className="header-container-items">
-          <div className="header-title-container">
+          <div className="header-title-container" onClick={handleClick}>
             <img
               className="circle-logo"
               src="circle-logo.svg"

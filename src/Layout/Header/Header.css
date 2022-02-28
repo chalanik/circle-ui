@@ -11,7 +11,8 @@
 
 .header-title-container {
     display: flex;
-    align-items: center;;
+    align-items: center;
+    cursor: pointer;
 }
 
 .header-company-name-container {
