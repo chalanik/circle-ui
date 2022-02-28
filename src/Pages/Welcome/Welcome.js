@@ -24,6 +24,9 @@ function Welcome() {
       "lori",
       "katie",
       "karthik",
+      "dhinesh",
+      "charan",
+      "harry",
     ].includes(userId)
       ? userId
       : "nikhil";
@@ -39,7 +42,7 @@ function Welcome() {
     } else {
       isUserRegistered = true;
       localStorage.setItem("userInfo", JSON.stringify(data));
-      navigate("/dashboard-container");
+      // navigate("/dashboard-container");
     }
   };
 
