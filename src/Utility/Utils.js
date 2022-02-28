@@ -9,7 +9,9 @@ export const validatePost = async (message) => {
         "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630",
       },
     }
-  );
+  ).catch((err) => {
+    console.log(err);
+  });
 };
 
 // sort by createdAt function

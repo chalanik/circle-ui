@@ -18,6 +18,7 @@ import CTACard from "../../Layout/CTACard/CTACard";
 import { CircularProgress, Box } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { validatePost } from "../../Utility/Utils";
 
 function Circle(props) {
   let user = localStorage.getItem("userInfo");
@@ -68,25 +69,15 @@ function Circle(props) {
     setOpen(false);
   };
 
-  const validatePost = async (post) => {
-    return fetch(
-      `https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?classify=True`,
-      {
-        method: "POST",
-        body: post.title + " " + post.description,
-        headers: {
-          "Content-Type": "text/plain",
-          "Ocp-Apim-Subscription-Key": "570a1bee96c64016bb3bc0fe4ebc3630",
-        },
-      }
-    );
-  };
 
   const handlePost = async (post) => {
     setErrorMessageOnPost(false);
-    const moderatorData = await validatePost(post);
-    const moderatorRes = await moderatorData.json();
-    const isInValidPost = moderatorRes.Terms && moderatorRes.Terms.length > 0;
+    const moderatorData = await validatePost(post.title + " " + post.description);
+    let isInValidPost;
+    if (moderatorData?.ok) {
+      const moderatorRes = await moderatorData.json();
+      isInValidPost = moderatorRes?.Terms && moderatorRes.Terms.length > 0;
+    }
     if (isInValidPost) {
       setErrorMessageOnPost(true);
     } else {

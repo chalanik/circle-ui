@@ -81,8 +81,12 @@ function Discussion(props) {
     setErrorMessageOnPost(false);
     console.log(comment);
     const moderatorData = await validatePost(comment.content);
-    const moderatorRes = await moderatorData.json();
-    const isInValidPost = moderatorRes.Terms && moderatorRes.Terms.length > 0;
+    let isInValidPost;
+    if (moderatorData?.ok) {
+      const moderatorRes = await moderatorData.json();
+      isInValidPost = moderatorRes?.Terms && moderatorRes.Terms.length > 0;
+    }
+
     if (isInValidPost) {
       setErrorMessageOnPost(true);
     } else {
@@ -96,7 +100,7 @@ function Discussion(props) {
       );
       comment = await res.json();
       comment.user = { _id: user._id, name: user.name };
-      post.comments.unshift(comment)
+      post.comments.unshift(comment);
       setPost(post);
       localStorage.setItem("update", true);
       handleClose();
