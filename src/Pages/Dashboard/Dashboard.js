@@ -50,7 +50,7 @@ function Dashboard() {
     const update = localStorage.getItem("update");
     (!posts.length || update === "true") &&
       fetch(
-        `https://circle-server.azurewebsites.net/api/v1/user/${userInfo._id}/`
+        `https://ms-circle.azurewebsites.net/api/v1/user/${userInfo._id}/`
       )
         .then((res) => res.json())
         .then((data) => {

@@ -28,7 +28,7 @@ function Topics() {
     user = JSON.parse(localStorage.getItem("userFormData"));
     user = { ...user, circles: circleIdList };
     localStorage.setItem("userFormData", JSON.stringify(user));
-    fetch(`https://circle-server.azurewebsites.net/api/v1/user/${user._id}`, {
+    fetch(`https://ms-circle.azurewebsites.net/api/v1/user/${user._id}`, {
       method: "POST",
       body: JSON.stringify({ zip: user.zip, circles: circleIdList }),
       headers: {

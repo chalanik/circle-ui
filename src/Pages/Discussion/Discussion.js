@@ -66,7 +66,7 @@ function Discussion(props) {
 
   useEffect(() => {
     !post &&
-      fetch(`https://circle-server.azurewebsites.net/api/v1/post/${id}`)
+      fetch(`https://ms-circle.azurewebsites.net/api/v1/post/${id}`)
         .then((res) => res.json())
         .then((data) => {
           data.comments.sort(sortByCreatedAt);
@@ -91,7 +91,7 @@ function Discussion(props) {
       setErrorMessageOnPost(true);
     } else {
       const res = await fetch(
-        `https://circle-server.azurewebsites.net/api/v1/post/${id}/comment`,
+        `https://ms-circle.azurewebsites.net/api/v1/post/${id}/comment`,
         {
           method: "POST",
           body: JSON.stringify({ ...comment, user: user._id, post: post._id }),

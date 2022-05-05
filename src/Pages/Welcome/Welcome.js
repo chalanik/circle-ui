@@ -34,7 +34,7 @@ function Welcome() {
     let user = {};
 
     const response = await fetch(
-      `https://circle-server.azurewebsites.net/api/v1/user/${userId}`
+      `https://ms-circle.azurewebsites.net/api/v1/user/${userId}`
     );
     if (response.ok) {
       const data = await response.json();
@@ -53,7 +53,7 @@ function Welcome() {
 
   const fetchCircles = async () => {
     const response = await fetch(
-      `https://circle-server.azurewebsites.net/api/v1/circles`
+      `https://ms-circle.azurewebsites.net/api/v1/circles`
     );
     const data = await response.json();
     localStorage.setItem("circles", JSON.stringify(data));

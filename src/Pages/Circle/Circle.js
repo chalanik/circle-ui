@@ -67,7 +67,7 @@ function Circle(props) {
 
   useEffect(() => {
     !circle &&
-      fetch(`https://circle-server.azurewebsites.net/api/v1/circle/${id}`)
+      fetch(`https://ms-circle.azurewebsites.net/api/v1/circle/${id}`)
         .then((res) => res.json())
         .then((data) => {
           data.posts.sort(sortByCreatedAt);
@@ -104,7 +104,7 @@ function Circle(props) {
       setErrorMessageOnPost(true);
     } else {
       const res = await fetch(
-        `https://circle-server.azurewebsites.net/api/v1/circle/${circle._id}/post`,
+        `https://ms-circle.azurewebsites.net/api/v1/circle/${circle._id}/post`,
         {
           method: "POST",
           body: JSON.stringify({ ...post, user: user._id }),
