@@ -39,7 +39,7 @@ function Welcome() {
     if (response.ok) {
       const data = await response.json();
       if (data && data?.zip && data?.circles?.length) {
-        isUserRegistered = true;
+        // isUserRegistered = true;
         // navigate("/dashboard-container");
       } else {
         user = { ...user, _id: data?._id, name: data?.name };
@@ -70,12 +70,11 @@ function Welcome() {
   });
 
   const handleClick = () => {
-    // if (isUserRegistered) {
-    //   navigate("/dashboard-container");
-    // } else {
-    //   navigate("/user-info");
-    // }
-    navigate("/user-info");
+    if (isUserRegistered) {
+      navigate("/dashboard-container");
+    } else {
+      navigate("/user-info");
+    }
   };
   if (!loaded)
     return (
