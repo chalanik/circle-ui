@@ -7,6 +7,7 @@ import InfoOutlined from "@mui/icons-material/InfoOutlined";
 import "./UserInfo.css";
 import "../../styles.css";
 import Post from "../../Layout/Post/Post";
+import userMock from "../../Mocks/user-mock";
 
 function UserInfo() {
   const [zip, setZip] = useState("");
@@ -14,8 +15,10 @@ function UserInfo() {
   let userData = localStorage.getItem("userFormData");
   if (userData) {
     userData = JSON.parse(userData);
+  } else {
+    userData = userMock;
   }
-  if (!userData?.name) {
+  if (!userData.name) {
     userData.name = "Katie B.";
   }
   const [userName] = useState(userData.name);
