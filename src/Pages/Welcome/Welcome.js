@@ -70,11 +70,12 @@ function Welcome() {
   });
 
   const handleClick = () => {
-    if (isUserRegistered) {
-      navigate("/dashboard-container");
-    } else {
-      navigate("/user-info");
-    }
+    // if (isUserRegistered) {
+    //   navigate("/dashboard-container");
+    // } else {
+    //   navigate("/user-info");
+    // }
+    navigate("/user-info");
   };
   if (!loaded)
     return (
