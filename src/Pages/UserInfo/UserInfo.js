@@ -15,7 +15,7 @@ function UserInfo() {
   if (userData) {
     userData = JSON.parse(userData);
   }
-  if (!userData.name) {
+  if (!userData?.name) {
     userData.name = "Katie B.";
   }
   const [userName] = useState(userData.name);
