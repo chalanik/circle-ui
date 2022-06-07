@@ -19,7 +19,7 @@ function UserInfo() {
     userData = userMock;
   }
   if (!userData.name) {
-    userData.name = "Katie B.";
+    userData.name = "Katie Banks";
   }
   const [userName] = useState(userData.name);
 
